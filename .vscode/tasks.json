@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "./${workspaceFolder}/c:/Users/Administrator/AppData/Roaming/Code/User/workspaceStorage/bc10c43f3f091444df0c9df4f4aa13f0/ms-dotnettools.csdevkit/cSharp_pra.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "./${workspaceFolder}/c:/Users/Administrator/AppData/Roaming/Code/User/workspaceStorage/bc10c43f3f091444df0c9df4f4aa13f0/ms-dotnettools.csdevkit/cSharp_pra.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "./${workspaceFolder}/c:/Users/Administrator/AppData/Roaming/Code/User/workspaceStorage/bc10c43f3f091444df0c9df4f4aa13f0/ms-dotnettools.csdevkit/cSharp_pra.sln"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+# .gitignore 内容
+# .NET 编译缓存
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+.vs/
+.vscode/!settings.json
+.vscode/!extensions.json
+# 系统文件
+.DS_Store

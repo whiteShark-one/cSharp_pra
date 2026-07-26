@@ -19,9 +19,9 @@ namespace CSharp
             Unit1OfTextAndVariables u = new Unit1OfTextAndVariables("Bob", 'm', 98, 12.235m, true);
             // 打印类的成员属性
             // Console.WriteLine(u.ToString);
-            u.PrintPro();
-            u.PrintText();
-            
+            // u.PrintPro();
+            // u.PrintText();
+            u.PrintTextAndVar();
         }
     }
 }

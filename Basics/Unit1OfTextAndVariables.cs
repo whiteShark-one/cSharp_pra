@@ -47,5 +47,14 @@ namespace CSharp
             // 打印布尔文本
             Console.WriteLine("打印布尔文本：{0}",true);
         }
+
+        public void PrintTextAndVar()
+        {
+            string var1 = "鲍勃Bob";
+            int var2 = 3;
+            float var3 = 34.4f;
+            decimal var4 = 34.53m;
+            Console.WriteLine("Hello, {0}! You have {1} messages in your inbox. The temperature is {2} celsius {3}.", var1,var2,var3,var4);
+        }
     }
 }

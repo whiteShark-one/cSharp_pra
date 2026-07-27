@@ -1,4 +1,5 @@
 ﻿using System;
+using cSharp_pra.Basics;
 
 namespace CSharp
 {
@@ -21,7 +22,13 @@ namespace CSharp
             // Console.WriteLine(u.ToString);
             // u.PrintPro();
             // u.PrintText();
-            u.PrintTextAndVar();
+            // u.PrintTextAndVar();
+            Section1OfStringFormat ss = new Section1OfStringFormat();
+            // ss.Display();
+            // ss.janText();
+            // ss.combineStr();
+            // ss.innerStr();
+            ss.complish();
         }
     }
 }

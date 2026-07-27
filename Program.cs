@@ -15,7 +15,7 @@ namespace CSharp
             // rectangle.Acceptdetails();
             // rectangle.Display();
             
-            // 单元1：使用 C 中的文本值和变量值存储和检索数据
+            // 部分1：使用 C 中的文本值和变量值存储和检索数据
             // 练习-打印文本值
             Unit1OfTextAndVariables u = new Unit1OfTextAndVariables("Bob", 'm', 98, 12.235m, true);
             // 打印类的成员属性
@@ -23,12 +23,24 @@ namespace CSharp
             // u.PrintPro();
             // u.PrintText();
             // u.PrintTextAndVar();
+            // 部分1：执行基本字符串格式设置
             Section1OfStringFormat ss = new Section1OfStringFormat();
             // ss.Display();
             // ss.janText();
             // ss.combineStr();
             // ss.innerStr();
-            ss.complish();
+            // ss.complish();
+
+            // 部分1：对数字进行基本操作
+            Section1OfNumOpt sn = new Section1OfNumOpt();
+            // sn.addtionUsingimpData();
+            // sn.complexDataAdd();
+            // sn.complexDataAddAdvanced();
+            // sn.complexDataDivided();
+            // sn.useDemicalToDivide();
+            // sn.intToDecimal();
+            // sn.intPD();
+            sn.tempConvert();
         }
     }
 }

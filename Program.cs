@@ -45,7 +45,12 @@ namespace CSharp
             // 部分1：计算和打印学生成绩
             Section1OfPrintStuScore sp = new Section1OfPrintStuScore();
             // sp.calStuToalScore();   // 计算每位同学的加和总成绩
-            sp.calStuAverScore();
+            // sp.calStuAverScore();
+
+            // 部分1：计算最终GPA
+            Section1OfCalFinGPA sc = new Section1OfCalFinGPA();
+            // sc.storeEveryCourseS();
+            sc.calToalHoursAndGPA();
 
         }
     }

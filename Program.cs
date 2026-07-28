@@ -70,7 +70,12 @@ namespace CSharp
             Section2OfForEachAccess se = new Section2OfForEachAccess();
             // se.displayArray();
             // se.useforEach();
-            se.findBOrder();
+            // se.findBOrder();
+
+            // 部分3：使用循环和条件评估学生分数
+            Section2OfUseLoopCon su = new Section2OfUseLoopCon();
+            // su.estimateStu();
+            su.estimateStuEtrx();
         }
 
         // 

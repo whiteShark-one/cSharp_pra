@@ -1,5 +1,6 @@
 ﻿using System;
 using cSharp_pra.Basics;
+using cSharp_pra.Basics.Section2;
 
 namespace CSharp
 {
@@ -17,7 +18,7 @@ namespace CSharp
             
             // 部分1：使用 C 中的文本值和变量值存储和检索数据
             // 练习-打印文本值
-            Unit1OfTextAndVariables u = new Unit1OfTextAndVariables("Bob", 'm', 98, 12.235m, true);
+            Section1OfTextAndVariables u = new Section1OfTextAndVariables("Bob", 'm', 98, 12.235m, true);
             // 打印类的成员属性
             // Console.WriteLine(u.ToString);
             // u.PrintPro();
@@ -50,9 +51,34 @@ namespace CSharp
             // 部分1：计算最终GPA
             Section1OfCalFinGPA sc = new Section1OfCalFinGPA();
             // sc.storeEveryCourseS();
-            sc.calToalHoursAndGPA();
+            // sc.calToalHoursAndGPA();
 
+            // 部分2：调用.NET的方法
+            Section2OfNetMethod snm = new Section2OfNetMethod();
+            // snm.useNetMethod();
+            // int firstValue = 500;
+            // int secondValue = 600;
+            // int largerValue = snm.greaterNum(firstValue, secondValue);
+            // Console.WriteLine($"较大的数字： {largerValue}");
+
+            // 部分2：添加判断逻辑
+            Section2OfDecisionLogic sd = new Section2OfDecisionLogic();
+            // sd.isRandomEqual();
+            // sd.remindRent();
+
+            // 部分2：使用循环数组
+            Section2OfForEachAccess se = new Section2OfForEachAccess();
+            // se.displayArray();
+            // se.useforEach();
+            // se.findBOrder();
+
+            // 部分3：使用循环和条件评估学生分数
+            Section2OfUseLoopCon su = new Section2OfUseLoopCon();
+            // su.estimateStu();
+            su.estimateStuEtrx();
         }
+
+        // 
     }
 }
 

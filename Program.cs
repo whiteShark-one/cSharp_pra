@@ -64,7 +64,13 @@ namespace CSharp
             // 部分2：添加判断逻辑
             Section2OfDecisionLogic sd = new Section2OfDecisionLogic();
             // sd.isRandomEqual();
-            sd.remindRent();
+            // sd.remindRent();
+
+            // 部分2：使用循环数组
+            Section2OfForEachAccess se = new Section2OfForEachAccess();
+            // se.displayArray();
+            // se.useforEach();
+            se.findBOrder();
         }
 
         // 

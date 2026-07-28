@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CSharp
 {
-    class Unit1OfTextAndVariables
+    class Section1OfTextAndVariables
     {
         // 成员变量
         public string _firstname;
@@ -13,7 +13,7 @@ namespace CSharp
         int _gameScore;
         decimal _particlePerMillion;
         bool _processedCustomer;
-        public Unit1OfTextAndVariables(string firstname,char userOption,int gameScore,decimal particlePerMillion,bool processedCustomer)
+        public Section1OfTextAndVariables(string firstname,char userOption,int gameScore,decimal particlePerMillion,bool processedCustomer)
         {
             _firstname = firstname;
             _userOption = userOption;

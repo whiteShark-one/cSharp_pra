@@ -56,11 +56,18 @@ namespace CSharp
             // 部分2：调用.NET的方法
             Section2OfNetMethod snm = new Section2OfNetMethod();
             // snm.useNetMethod();
-            int firstValue = 500;
-            int secondValue = 600;
-            int largerValue = snm.greaterNum(firstValue, secondValue);
-            Console.WriteLine($"较大的数字： {largerValue}");
+            // int firstValue = 500;
+            // int secondValue = 600;
+            // int largerValue = snm.greaterNum(firstValue, secondValue);
+            // Console.WriteLine($"较大的数字： {largerValue}");
+
+            // 部分2：添加判断逻辑
+            Section2OfDecisionLogic sd = new Section2OfDecisionLogic();
+            // sd.isRandomEqual();
+            sd.remindRent();
         }
+
+        // 
     }
 }
 

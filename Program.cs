@@ -40,7 +40,13 @@ namespace CSharp
             // sn.useDemicalToDivide();
             // sn.intToDecimal();
             // sn.intPD();
-            sn.tempConvert();
+            // sn.tempConvert();
+
+            // 部分1：计算和打印学生成绩
+            Section1OfPrintStuScore sp = new Section1OfPrintStuScore();
+            // sp.calStuToalScore();   // 计算每位同学的加和总成绩
+            sp.calStuAverScore();
+
         }
     }
 }

@@ -63,5 +63,6 @@ namespace cSharp_pra.Basics.Section3
             // message = (permission.Contains("Admin") || permission.Contains("Manager")) ? (permission.Contains("Admin") ? (level > 55 ? "Welcome, Super Admin user." : "Welcome, Admin user.") : (level >= 20 ? "Contact an Admin for access." : "You do not have sufficient privileges.")) : "You do not have sufficient privileges.";
             Console.WriteLine(message);
         }
+
     }
 }

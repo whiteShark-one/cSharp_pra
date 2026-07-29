@@ -87,7 +87,16 @@ namespace CSharp
             // 部分3：使用switch-case
             Section3OfSwitchCase s3s = new Section3OfSwitchCase();
             // s3s.switchAndCase();
-            s3s.rewriteIfelseIf();
+            // s3s.rewriteIfelseIf();
+
+            // 部分3：使用do-while
+            Section3OfWhiledoWhile s3w = new Section3OfWhiledoWhile();
+            // s3w.playHeroAndMon();
+            // s3w.waitUserInput();
+            // s3w.waitUserInputThird();
+            // s3w.isInteger();
+            // s3w.isstringrole();
+            s3w.dealStrs();
         }
 
         // 

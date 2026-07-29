@@ -96,7 +96,11 @@ namespace CSharp
             // s3w.waitUserInputThird();
             // s3w.isInteger();
             // s3w.isstringrole();
-            s3w.dealStrs();
+            // s3w.dealStrs();
+
+            // 部分3：使用条件和循环
+            Section3OfConAndLoop s3l = new Section3OfConAndLoop();
+            s3l.animalMap();
         }
 
         // 

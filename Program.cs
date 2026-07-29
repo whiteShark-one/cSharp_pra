@@ -2,6 +2,7 @@
 using cSharp_pra.Basics;
 using cSharp_pra.Basics.Section2;
 using cSharp_pra.Basics.Section3;
+using cSharp_pra.Basics.Section4;
 
 namespace CSharp
 {
@@ -100,7 +101,12 @@ namespace CSharp
 
             // 部分3：使用条件和循环
             Section3OfConAndLoop s3l = new Section3OfConAndLoop();
-            s3l.animalMap();
+            // s3l.animalMap();
+
+            // 部分4：选择整型类型
+            Seciton4OfDataType s4d = new Seciton4OfDataType();
+            // s4d.findInteger();
+            s4d.findFloat();
         }
 
         // 

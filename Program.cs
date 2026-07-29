@@ -1,6 +1,7 @@
 ﻿using System;
 using cSharp_pra.Basics;
 using cSharp_pra.Basics.Section2;
+using cSharp_pra.Basics.Section3;
 
 namespace CSharp
 {
@@ -75,7 +76,13 @@ namespace CSharp
             // 部分3：使用循环和条件评估学生分数
             Section2OfUseLoopCon su = new Section2OfUseLoopCon();
             // su.estimateStu();
-            su.estimateStuEtrx();
+            // su.estimateStuEtrx();
+
+            // 部分3：使用布尔表达式
+            Section3OfCalBool s3c = new Section3OfCalBool();
+            // s3c.useConOpt();
+            // s3c.reverseCoins();
+            s3c.accessPer();
         }
 
         // 

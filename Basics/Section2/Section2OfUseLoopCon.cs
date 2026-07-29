@@ -199,6 +199,26 @@ namespace cSharp_pra.Basics.Section2
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
         }
+        /*
+            使用数组存储学生姓名和作业分数。
+
+            使用 foreach 语句作为外部程序循环来遍历学生姓名。
+
+            在外部循环中使用 if 语句来识别当前学生的姓名并访问该学生的作业分数。
+
+            在外部循环中使用 foreach 语句来遍历作业分数数组并对这些值进行求和。
+
+            在外部循环中使用算法来计算每个学生的考试平均分。
+
+            在外部循环中使用 if-elseif-else 构造来计算考试平均分并自动分配字母等级。
+
+            在计算学生的总分数和字母等级时整合额外的学分，如下所示：
+
+            根据学生分数数组中的元素数量来检测额外的学分分配。
+            在将额外的学分分数添加到考试成绩总和之前，将 10% 的权重系数应用于额外的学分分配。
+
+            格式化输出内容
+        */
         public void estimateStuEtrx()
         {
             // initialize variables - graded assignments 
@@ -326,5 +346,8 @@ namespace cSharp_pra.Basics.Section2
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
         }
+
+        // 挑战任务
+
     }
 }

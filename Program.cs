@@ -106,10 +106,16 @@ namespace CSharp
             // 部分4：选择整型类型
             Seciton4OfDataType s4d = new Seciton4OfDataType();
             // s4d.findInteger();
-            s4d.findFloat();
-        }
+            // s4d.findFloat();
 
-        // 
+            // 部分4：数据类型转换
+            Section4OfDataTypeConversion s4c = new Section4OfDataTypeConversion();
+            // s4c.combineIntAndString();
+            // s4c.exeDataConversion();
+            // s4c.checkTryParse();
+            // s4c.combineStringAndNum();
+            s4c.numOptToSpeNum();
+        }
     }
 }
 

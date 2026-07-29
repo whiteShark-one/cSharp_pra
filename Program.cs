@@ -82,7 +82,12 @@ namespace CSharp
             Section3OfCalBool s3c = new Section3OfCalBool();
             // s3c.useConOpt();
             // s3c.reverseCoins();
-            s3c.accessPer();
+            // s3c.accessPer();
+
+            // 部分3：使用switch-case
+            Section3OfSwitchCase s3s = new Section3OfSwitchCase();
+            // s3s.switchAndCase();
+            s3s.rewriteIfelseIf();
         }
 
         // 

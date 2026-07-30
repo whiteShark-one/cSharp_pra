@@ -122,7 +122,14 @@ namespace CSharp
             // s4o.findClearAndResize();
             // s4o.findSplitAndJoin();
             // s4o.reverseSpellWords();
-            s4o.outErrorOrder();
+            // s4o.outErrorOrder();
+
+            // 部分4：字符串和数字的格式设置
+            Section4OfStringNumFormat s4s = new Section4OfStringNumFormat();
+            // s4s.learnStringFormatSet();
+            // s4s.findStringInner();
+            // s4s.learnPaddingAndAlignment();
+            s4s.accStringInnerLetters();
         }
     }
 }

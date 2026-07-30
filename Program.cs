@@ -114,7 +114,15 @@ namespace CSharp
             // s4c.exeDataConversion();
             // s4c.checkTryParse();
             // s4c.combineStringAndNum();
-            s4c.numOptToSpeNum();
+            // s4c.numOptToSpeNum();
+
+            // 部分4：操作数组
+            Section4OfOptArray s4o = new Section4OfOptArray();
+            // s4o.findSortAndReverse();
+            // s4o.findClearAndResize();
+            // s4o.findSplitAndJoin();
+            // s4o.reverseSpellWords();
+            s4o.outErrorOrder();
         }
     }
 }

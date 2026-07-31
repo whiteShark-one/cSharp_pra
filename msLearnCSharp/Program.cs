@@ -4,8 +4,9 @@ using cSharp_pra.msLearnCSharp.Section1;
 using cSharp_pra.msLearnCSharp.Section2;
 using cSharp_pra.msLearnCSharp.Section3;
 using cSharp_pra.msLearnCSharp.Section4;
+using msLearnCSharp.Section5;
 
-namespace cSharp_pra.msLearnCSharp
+namespace msLearnCSharp
 {
     class Program
     {
@@ -135,7 +136,7 @@ namespace cSharp_pra.msLearnCSharp
             // 部分4：使用 C# 中的内置字符串数据类型方法修改字符串内容
             Section4OfStringBuildInMethod s4b = new Section4OfStringBuildInMethod();
             // s4b.learnIndexOfAndSubstring();
-            s4b.leadIndexOfAndLastIndexOf();
+            // s4b.leadIndexOfAndLastIndexOf();
             // s4b.learnRemoveAndReplace();
             // s4b.dealString();
 
@@ -143,6 +144,13 @@ namespace cSharp_pra.msLearnCSharp
             Section4OfUseVariables s4u = new Section4OfUseVariables();
             // s4u.useVariablesOne();
             // s4u.accVariablesOne();
+
+            // 部分5：编写C#方法
+            Section5OfCreateMethod s5c = new Section5OfCreateMethod();
+            // s5c.SayHello();
+            // s5c.markReCode();
+            // s5c.isIPv4();
+            s5c.tellFortune();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace cSharp_pra.msLearnCSharp.Section3
+namespace cSharp_pra.msLearnCSharp.Section4
 {
     public class Seciton4OfDataType
     {

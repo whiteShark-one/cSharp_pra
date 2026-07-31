@@ -136,7 +136,11 @@ namespace CSharp
             // s4b.learnIndexOfAndSubstring();
             // s4b.leadIndexOfAndLastIndexOf();
             // s4b.learnRemoveAndReplace();
-            s4b.dealString();
+            // s4b.dealString();
+
+            // 部分4：在C#中使用变量数据
+            Section4OfUseVariables s4u = new Section4OfUseVariables();
+            s4u.useVariablesOne();
         }
     }
 }

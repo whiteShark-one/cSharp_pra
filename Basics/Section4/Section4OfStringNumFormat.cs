@@ -11,6 +11,12 @@ namespace cSharp_pra.Basics.Section4
         public void learnStringFormatSet()
         {
             // 注意：不需要将 String.Format() 与此字符串内插方法一起使用。
+            /*
+                string.Format( $"" ) 嵌套 = 无效冗余；插值已经把变量渲染完成，Format 没有占位符可以处理。
+                string.Format 的核心能力：使用带 {0} 占位符的模板 + 外部参数填充；
+                模板固定写死在代码 → 优先用 $"" 插值；
+                模板运行时动态加载（配置文件） → 必须使用 string.Format。
+            */
 
             // 复合格式设置
             /*

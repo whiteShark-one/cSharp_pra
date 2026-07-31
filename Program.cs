@@ -129,7 +129,14 @@ namespace CSharp
             // s4s.learnStringFormatSet();
             // s4s.findStringInner();
             // s4s.learnPaddingAndAlignment();
-            s4s.accStringInnerLetters();
+            // s4s.accStringInnerLetters();
+
+            // 部分4：使用 C# 中的内置字符串数据类型方法修改字符串内容
+            Section4OfStringBuildInMethod s4b = new Section4OfStringBuildInMethod();
+            // s4b.learnIndexOfAndSubstring();
+            // s4b.leadIndexOfAndLastIndexOf();
+            // s4b.learnRemoveAndReplace();
+            s4b.dealString();
         }
     }
 }

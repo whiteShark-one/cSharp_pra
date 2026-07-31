@@ -140,7 +140,8 @@ namespace CSharp
 
             // 部分4：在C#中使用变量数据
             Section4OfUseVariables s4u = new Section4OfUseVariables();
-            s4u.useVariablesOne();
+            // s4u.useVariablesOne();
+            s4u.accVariablesOne();
         }
     }
 }

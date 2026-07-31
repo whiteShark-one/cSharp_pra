@@ -2,6 +2,7 @@
 using cSharp_pra.Basics;
 using cSharp_pra.Basics.Section2;
 using cSharp_pra.Basics.Section3;
+using cSharp_pra.Basics.Section4;
 
 namespace CSharp
 {
@@ -100,10 +101,48 @@ namespace CSharp
 
             // 部分3：使用条件和循环
             Section3OfConAndLoop s3l = new Section3OfConAndLoop();
-            s3l.animalMap();
-        }
+            // s3l.animalMap();
 
-        // 
+            // 部分4：选择整型类型
+            Seciton4OfDataType s4d = new Seciton4OfDataType();
+            // s4d.findInteger();
+            // s4d.findFloat();
+
+            // 部分4：数据类型转换
+            Section4OfDataTypeConversion s4c = new Section4OfDataTypeConversion();
+            // s4c.combineIntAndString();
+            // s4c.exeDataConversion();
+            // s4c.checkTryParse();
+            // s4c.combineStringAndNum();
+            // s4c.numOptToSpeNum();
+
+            // 部分4：操作数组
+            Section4OfOptArray s4o = new Section4OfOptArray();
+            // s4o.findSortAndReverse();
+            // s4o.findClearAndResize();
+            // s4o.findSplitAndJoin();
+            // s4o.reverseSpellWords();
+            // s4o.outErrorOrder();
+
+            // 部分4：字符串和数字的格式设置
+            Section4OfStringNumFormat s4s = new Section4OfStringNumFormat();
+            // s4s.learnStringFormatSet();
+            // s4s.findStringInner();
+            // s4s.learnPaddingAndAlignment();
+            // s4s.accStringInnerLetters();
+
+            // 部分4：使用 C# 中的内置字符串数据类型方法修改字符串内容
+            Section4OfStringBuildInMethod s4b = new Section4OfStringBuildInMethod();
+            // s4b.learnIndexOfAndSubstring();
+            // s4b.leadIndexOfAndLastIndexOf();
+            // s4b.learnRemoveAndReplace();
+            // s4b.dealString();
+
+            // 部分4：在C#中使用变量数据
+            Section4OfUseVariables s4u = new Section4OfUseVariables();
+            // s4u.useVariablesOne();
+            s4u.accVariablesOne();
+        }
     }
 }
 

@@ -1,10 +1,11 @@
 ﻿using System;
-using cSharp_pra.Basics;
-using cSharp_pra.Basics.Section2;
-using cSharp_pra.Basics.Section3;
-using cSharp_pra.Basics.Section4;
+using cSharp_pra.msLearnCSharp;
+using cSharp_pra.msLearnCSharp.Section1;
+using cSharp_pra.msLearnCSharp.Section2;
+using cSharp_pra.msLearnCSharp.Section3;
+using cSharp_pra.msLearnCSharp.Section4;
 
-namespace CSharp
+namespace cSharp_pra.msLearnCSharp
 {
     class Program
     {
@@ -134,14 +135,14 @@ namespace CSharp
             // 部分4：使用 C# 中的内置字符串数据类型方法修改字符串内容
             Section4OfStringBuildInMethod s4b = new Section4OfStringBuildInMethod();
             // s4b.learnIndexOfAndSubstring();
-            // s4b.leadIndexOfAndLastIndexOf();
+            s4b.leadIndexOfAndLastIndexOf();
             // s4b.learnRemoveAndReplace();
             // s4b.dealString();
 
             // 部分4：在C#中使用变量数据
             Section4OfUseVariables s4u = new Section4OfUseVariables();
             // s4u.useVariablesOne();
-            s4u.accVariablesOne();
+            // s4u.accVariablesOne();
         }
     }
 }

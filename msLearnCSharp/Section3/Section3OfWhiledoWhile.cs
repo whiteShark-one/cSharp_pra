@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace cSharp_pra.Basics.Section3
+namespace cSharp_pra.msLearnCSharp.Section3
 {
     public class Section3OfWhiledoWhile
     {

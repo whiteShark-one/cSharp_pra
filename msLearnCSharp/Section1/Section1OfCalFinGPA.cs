@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace cSharp_pra.Basics
+namespace cSharp_pra.msLearnCSharp.Section1
 {
     public class Section1OfCalFinGPA
     {

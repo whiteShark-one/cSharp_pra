@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace cSharp_pra.Basics.Section2
+namespace cSharp_pra.msLearnCSharp.Section2
 {
     public class Section2OfUseLoopCon
     {

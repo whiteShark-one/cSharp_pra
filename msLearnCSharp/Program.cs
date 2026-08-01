@@ -19,7 +19,7 @@ namespace msLearnCSharp
             // // rectangle.SayHello(); 
             // rectangle.Acceptdetails();
             // rectangle.Display();
-            
+
             // 部分1：使用 C 中的文本值和变量值存储和检索数据
             // 练习-打印文本值
             Section1OfTextAndVariables u = new Section1OfTextAndVariables("Bob", 'm', 98, 12.235m, true);
@@ -150,7 +150,40 @@ namespace msLearnCSharp
             // s5c.SayHello();
             // s5c.markReCode();
             // s5c.isIPv4();
-            s5c.tellFortune();
+            // s5c.tellFortune();
+
+            // 部分5：了解方法范围
+            Section5OfCMethodByParam s5p = new Section5OfCMethodByParam();
+            // s5p.PrintCircleArea(4);
+            // s5p.PrintCircleCircumference(4);
+            // int a = 3;
+            // int b = 4;
+            // int c = 0;
+            // s5p.Multiply(a, b, c);
+            // Console.WriteLine($"global statement: {a} x {b} = {c}");
+            // int[] array = {1, 2, 3, 4, 5};
+            // s5p.PrintArray(array);
+            // s5p.Clear(array);
+            // s5p.PrintArray(array);
+            // string status = "Healthy";
+            // Console.WriteLine($"Start: {status}");
+            // s5p.SetHealth(status, false);
+            // Console.WriteLine($"Start: {status}");
+            // string msg = "Healthy";
+            // Console.WriteLine($"Start: {msg}");
+            // s5p.SetHealth2(false);
+            // s5p.SetHealth3();
+            // 练习：创建RSVP应用程序
+            // s5p.RSVP("Rebecca", 1, "none", true);
+            // s5p.RSVP("Nadia", 2, "Nuts", true);
+            // s5p.RSVP("Linh", 2, "none", false);
+            // s5p.RSVP(name: "Linh", partySize: 2, allergies: "none", inviteOnly: false);
+            // s5p.RSVP("Tony", 1, "Jackfruit", true);
+            // s5p.RSVP("Noor", 4, "none", false);
+            // s5p.RSVP("Jonte", 2, "Stone fruit", false);
+            // s5p.ShowRSVPs();
+            // 练习：显示电子邮件地址
+            s5p.showEmailAdr();
         }
     }
 }

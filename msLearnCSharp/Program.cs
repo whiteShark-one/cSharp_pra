@@ -229,8 +229,16 @@ namespace msLearnCSharp
             // }
 
             // 骰子小游戏
-            
-            s5r.PlayGame();
+            // s5r.PlayGame();
+
+            // 计划参观动物园
+            Section5OfVisitZoo s5v = new Section5OfVisitZoo();
+            // s5v.RandomizeAnimals();
+            // Console.WriteLine("School A");
+            // s5v.AssignGroup();
+            s5v.PlanSchoolVisit("School A");
+            s5v.PlanSchoolVisit("School B", 3);
+            s5v.PlanSchoolVisit("School C", 2);
         }
 
 

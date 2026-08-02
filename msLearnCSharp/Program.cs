@@ -183,8 +183,57 @@ namespace msLearnCSharp
             // s5p.RSVP("Jonte", 2, "Stone fruit", false);
             // s5p.ShowRSVPs();
             // 练习：显示电子邮件地址
-            s5p.showEmailAdr();
+            // s5p.showEmailAdr();
+
+            // 部分5：创建返回值的方法
+            Section5OfReturnParm s5r = new Section5OfReturnParm();
+            // s5r.initalInput();
+            // double usd = 23.73;
+            // int vnd = s5r.UsdToVnd(usd);
+            // Console.WriteLine($"${usd} USD = ${vnd} VND");
+            // Console.WriteLine($"${vnd} VND = ${s5r.VndToUsd(vnd)} USD");
+            // Console.WriteLine($"反转字符串：{s5r.ReverseWord("testABCD")}");
+            string input = "there are snakes at the zoo";
+            // Console.WriteLine(input);
+            // Console.WriteLine(s5r.ReverseSentence(input));
+
+            // 从方法中返回布尔值
+            string[] words = { "racecar", "talented", "deified", "tent", "tenet" };
+            // Console.WriteLine("Is it a palindrome?");
+
+            // 从方法中返回数组
+            // int target = 60;
+            // int[] coins = new int[] { 5, 5, 50, 25, 25, 10, 5 };
+            // int[] result = s5r.TwoCoins(coins, target);
+            // Console.WriteLine($"硬币的位置：{result[0]},{result[1]}");
+
+            // int target = 80;
+            // int[] coins = new int[] { 5, 5, 50, 25, 25, 10, 5 };
+            // int[,] result = s5r.DoubleTwoCoins(coins, target);
+
+            // if (result.Length == 0)
+            // {
+            //     Console.WriteLine("No two coins make change");
+            // }
+            // else
+            // {
+            //     Console.WriteLine("Change found at positions:");
+            //     for (int i = 0; i < result.GetLength(0); i++)
+            //     {
+            //         if (result[i, 0] == -1)
+            //         {
+            //             break;
+            //         }
+            //         Console.WriteLine($"{result[i, 0]},{result[i, 1]}");
+            //     }
+            // }
+
+            // 骰子小游戏
+            
+            s5r.PlayGame();
         }
+
+
     }
 }
 

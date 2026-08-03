@@ -251,7 +251,22 @@ namespace msLearnCSharp
             // s6r.debugConditionalBreakPoint();
             // s6r.watchVariablesAndExe();
             // s6r.useWatch();
-            s6r.findPro();
+            // s6r.findPro();
+            
+            Section6OfTryCatch s6c = new Section6OfTryCatch();
+            // s6c.divideTryCatch();
+            // try
+            // {
+            //     // s6c.Process1();
+            //     Section6OfTryCatch.Process1();
+            // }
+            // catch
+            // {
+            //     Console.WriteLine("An exception has occurred");
+            // }
+            // Console.WriteLine("Exit program");
+            // s6c.allException();
+            s6c.catchSpecificError();
         }
 
 

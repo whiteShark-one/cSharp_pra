@@ -3,15 +3,27 @@
     "configurations": [
         {
             "name": "启动 msLearnConsole",
-            "type": "dotnet",
+            "type": "coreclr",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/msLearnCSharp/msLearnCSharp.csproj"
+            "preLaunchTask": "build-msLearnCSharp",
+            "program": "${workspaceFolder}/msLearnCSharp/bin/Debug/net10.0/msLearnCSharp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/msLearnCSharp",
+            // "console": "externalTerminal", // 设置对应于外部终端窗口
+            "console": "integratedTerminal ", // 设置对应于 Visual Studio Code 编辑器下方“面板”区域中的“输出”面板
+            "stopAtEntry": false
         },
         {
             "name": "启动 rookieTutorial",
-            "type": "dotnet",
+            "type": "coreclr",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/rookieTutorial/rookieTutorial.csproj"
+            "preLaunchTask": "build-rookieTutorial",
+            "program": "${workspaceFolder}/rookieTutorial/bin/Debug/net10.0/rookieTutorial.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/rookieTutorial",
+            // "console": "externalTerminal",
+            "console": "integratedTerminal ",
+            "stopAtEntry": false
         }
     ]
 }

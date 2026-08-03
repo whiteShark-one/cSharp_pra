@@ -236,9 +236,12 @@ namespace msLearnCSharp
             // s5v.RandomizeAnimals();
             // Console.WriteLine("School A");
             // s5v.AssignGroup();
-            s5v.PlanSchoolVisit("School A");
-            s5v.PlanSchoolVisit("School B", 3);
-            s5v.PlanSchoolVisit("School C", 2);
+            // s5v.PlanSchoolVisit("School A");
+            // s5v.PlanSchoolVisit("School B", 3);
+            // s5v.PlanSchoolVisit("School C", 2);
+
+            Section5OfPlayerEatFood s5e = new Section5OfPlayerEatFood();
+            s5e.StartGame();
         }
 
 

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CommonLib/CommonLib.csproj" />
+  <Project Path="msLearnCSharp/msLearnCSharp.csproj" />
+  <Project Path="rookieTutorial/rookieTutorial.csproj" />
+</Solution>

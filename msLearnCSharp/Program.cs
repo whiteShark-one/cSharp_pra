@@ -266,7 +266,13 @@ namespace msLearnCSharp
             // }
             // Console.WriteLine("Exit program");
             // s6c.allException();
-            s6c.catchSpecificError();
+            // s6c.catchSpecificError();
+
+            // 部分6：创建和引发异常
+            Section6OfCreateErrorObject s6o = new Section6OfCreateErrorObject();
+            // s6o.indictError();
+            // s6o.induceErrorPra2();
+            s6o.unnormalError();
         }
 
 

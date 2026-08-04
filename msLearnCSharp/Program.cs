@@ -5,6 +5,7 @@ using cSharp_pra.msLearnCSharp.Section2;
 using cSharp_pra.msLearnCSharp.Section3;
 using cSharp_pra.msLearnCSharp.Section4;
 using msLearnCSharp.Section5;
+using msLearnCSharp.Section6;
 
 namespace msLearnCSharp
 {
@@ -241,7 +242,40 @@ namespace msLearnCSharp
             // s5v.PlanSchoolVisit("School C", 2);
 
             Section5OfPlayerEatFood s5e = new Section5OfPlayerEatFood();
-            s5e.StartGame();
+            // s5e.StartGame();
+
+            // 部分6：运行和调试代码
+            Section6OfReRunPri s6r = new Section6OfReRunPri();
+            // s6r.runStringError();
+            // s6r.runGreeting();
+            // s6r.debugConditionalBreakPoint();
+            // s6r.watchVariablesAndExe();
+            // s6r.useWatch();
+            // s6r.findPro();
+            
+            Section6OfTryCatch s6c = new Section6OfTryCatch();
+            // s6c.divideTryCatch();
+            // try
+            // {
+            //     // s6c.Process1();
+            //     Section6OfTryCatch.Process1();
+            // }
+            // catch
+            // {
+            //     Console.WriteLine("An exception has occurred");
+            // }
+            // Console.WriteLine("Exit program");
+            // s6c.allException();
+            // s6c.catchSpecificError();
+
+            // 部分6：创建和引发异常
+            Section6OfCreateErrorObject s6o = new Section6OfCreateErrorObject();
+            // s6o.indictError();
+            // s6o.induceErrorPra2();
+            // s6o.unnormalError();
+
+            Section6OfDeBugError s6b = new Section6OfDeBugError();
+            s6b.useCashChange();
         }
 
 

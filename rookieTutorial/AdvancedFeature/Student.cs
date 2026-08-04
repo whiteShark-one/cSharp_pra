@@ -4,10 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using rookieTutorial.AdvancedFeature;
 
-public delegate bool NeedSwap(Student a, Student b);
-
 namespace rookieTutorial.AdvancedFeature
 {
+    public delegate bool NeedSwap(Student a, Student b);
     public class Student
     {
         public int Id { get; set; }

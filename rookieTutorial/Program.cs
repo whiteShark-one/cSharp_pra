@@ -1,6 +1,7 @@
 ﻿using System;
 using AdvancedFeature.rookieTutorial;
 using cSharp_pra.rookieTutorial;
+using rookieTutorial;
 using rookieTutorial.AdvancedFeature;
 // using rookieTutorial;
 // using cSharp_pra.rookieTutorial.AdvancedFeature;
@@ -38,20 +39,32 @@ namespace CSharp
             // Console.WriteLine(op(2,4));
 
             // 通过回调（将方法作为参数传递）委托，根据学生的Id、Score、Height分别升降序排序显示
-            Student[] stus =
-            {
-                new(1,97,1.57),
-                new(2,93,1.60),
-                new(3,79,1.55),
-                new(4,88,1.50),
-                new(5,99,1.64),
-                new(6,76,1.49)
-            };
-            Student.MySort(stus, Student.HeightAsc);
-            foreach(Student stu in stus)
-            {
-                stu.Show();
-            }
+            // Student[] stus =
+            // {
+            //     new(1,97,1.57),
+            //     new(2,93,1.60),
+            //     new(3,79,1.55),
+            //     new(4,88,1.50),
+            //     new(5,99,1.64),
+            //     new(6,76,1.49)
+            // };
+            // Student.MySort(stus, Student.HeightAsc);
+            // foreach(Student stu in stus)
+            // {
+            //     stu.Show();
+            // }
+
+            // 了解事件，发布者：ProcessManager，订阅者：ProcessMonitor
+            // #1 创建发布者manager 和 订阅者monitor
+            ProcessManager manager = new ProcessManager();
+            ProcessMonitor monitor = new ProcessMonitor();
+            // #2 订阅事件（核心） 
+            // -> 事件本质是对委托的封装，通过委托 += 挂载订阅者方法，发布者发布事件.Invoke()触发订阅者委托方法执行，实现发布-订阅模型
+            manager.processCreated += monitor.onProcessCreate;
+
+            manager.createProcess(3373);
+            manager.createProcess(352);
+            manager.createProcess(321);
             
         }
     }

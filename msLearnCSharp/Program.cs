@@ -272,7 +272,10 @@ namespace msLearnCSharp
             Section6OfCreateErrorObject s6o = new Section6OfCreateErrorObject();
             // s6o.indictError();
             // s6o.induceErrorPra2();
-            s6o.unnormalError();
+            // s6o.unnormalError();
+
+            Section6OfDeBugError s6b = new Section6OfDeBugError();
+            s6b.useCashChange();
         }
 
 

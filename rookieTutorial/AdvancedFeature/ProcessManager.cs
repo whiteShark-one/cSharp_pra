@@ -5,6 +5,19 @@ using System.Threading.Tasks;
 
 namespace rookieTutorial.AdvancedFeature
 {
+    class ProcessEventArgs : EventArgs
+    {
+        public int ProcessId
+        {
+            get;
+            set;
+        }
+        public ProcessEventArgs(int processId)
+        {
+            ProcessId = processId;
+        }
+
+    }
     public class ProcessManager
     {
         /*
@@ -18,16 +31,19 @@ namespace rookieTutorial.AdvancedFeature
         */
         // 发布者：进程管理者用于发布一个进程，如果进程发生了变化，需要通知所有订阅它的人
         // #1 定义一个委托，用于传递进程ID
-        public delegate void ProcessCreateHandler(int processId);
+        // public delegate void ProcessCreateHandler(int processId);
         // #2 基于委托声明一个事件（对于委托的封装）
-        public event ProcessCreateHandler? processCreated;
+        // public event ProcessCreateHandler? processCreated;
+        public event EventHandler processCreated; // 更改为推荐的EventHandler类型
         // #3 创建一个进程
         public void createProcess(int processId)
         {
             Console.WriteLine($"[Manager]: {processId}");
             // #4 创建进程后，通知其他订阅者 -> 触发事件
             // 空条件运算符 
-            processCreated?.Invoke(processId);   // ? 先判断是否有订阅者，为空直接返回，不为空执行Invoke
+            // processCreated?.Invoke(processId);   // ? 先判断是否有订阅者，为空直接返回，不为空执行Invoke
+            // processCreateHandler?.Invoke(this, null);
+            processCreated?.Invoke(this,new ProcessEventArgs(3303));
         }
     }
 }

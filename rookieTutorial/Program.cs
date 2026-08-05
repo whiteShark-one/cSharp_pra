@@ -60,11 +60,18 @@ namespace CSharp
             ProcessMonitor monitor = new ProcessMonitor();
             // #2 订阅事件（核心） 
             // -> 事件本质是对委托的封装，通过委托 += 挂载订阅者方法，发布者发布事件.Invoke()触发订阅者委托方法执行，实现发布-订阅模型
-            manager.processCreated += monitor.onProcessCreate;
+            // manager.processCreated += monitor.onProcessCreate;
+            // manager.createProcess(3373);
+            // manager.createProcess(352);
+            // manager.createProcess(321);
 
-            manager.createProcess(3373);
-            manager.createProcess(352);
-            manager.createProcess(321);
+            // 创建闹钟触发到点事件，通知手机、人
+            AlarmClock alarm = new AlarmClock();
+            Phone phone = new Phone();
+            Person person = new Person();
+            alarm.alarmRing += phone.popNotice;
+            alarm.alarmRing += person.wakeUp;
+            alarm.startTiming(1);
             
         }
     }

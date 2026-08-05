@@ -41,4 +41,44 @@ namespace AdvancedFeature.rookieTutorial
             return x - y;
         }
     }
+
+    // event事件 -> 闹钟响铃（触发事件）->手机、人接到通知（订阅者挂载方法并做出响应）
+    // #1 定义事件委托（规定事件回调方法签名）
+    // 约定：事件委托标准格式 void 方法名（发送者object sender，事件参数 e）
+    // public delegate void AlarmEventHandler(object sender, string message);
+    class AlarmClock
+    {
+        // #2 封装委托为事件，基于上面的委托
+        // public event AlarmEventHandler alarmRing;
+        // #2.1 使用.NET内置事件委托 EventHandler<T> -> 不用手写delegate
+        public event EventHandler<string> ?alarmRing;
+        // 模拟闹钟到点，触发事件
+        // 注意：protected virtual 是C#事件标准写法，让子类可以重写
+        protected virtual void onAlarming(string msg)
+        {
+            alarmRing?.Invoke(this, msg);
+        }
+        // 对外公开方法，模拟闹钟计时结束
+        public void startTiming(int second)
+        {
+            Console.WriteLine($"闹钟开始计时 {second} ");
+            System.Threading.Thread.Sleep(second * 1000);
+            // 闹钟响铃
+            onAlarming("闹钟响了，时间到!");
+        }
+    }
+    class Person
+    {
+        public void wakeUp(object sender, string msg)
+        {
+            Console.WriteLine($"[Person] 收到闹钟通知，{msg} -> 起床");
+        }
+    }
+    class Phone
+    {
+        public void popNotice(object sender, string msg)
+        {
+            Console.WriteLine($"[Phone] 收到闹钟通知，{msg} -> 弹出消息");
+        }
+    }
 }

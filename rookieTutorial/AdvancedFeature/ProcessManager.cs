@@ -43,7 +43,7 @@ namespace rookieTutorial.AdvancedFeature
             // 空条件运算符 
             // processCreated?.Invoke(processId);   // ? 先判断是否有订阅者，为空直接返回，不为空执行Invoke
             // processCreateHandler?.Invoke(this, null);
-            processCreated?.Invoke(this,new ProcessEventArgs(3303));
+            processCreated?.Invoke(this, new ProcessEventArgs(3303));
         }
     }
 }

@@ -6,7 +6,9 @@ using rookieTutorial.AdvancedFeature;
 
 namespace rookieTutorial.AdvancedFeature
 {
-    public delegate bool NeedSwap(Student a, Student b);
+    // public delegate bool NeedSwap(Student a, Student b);
+    // 使用Func() 定义标准委托
+
     public class Student
     {
         public int Id { get; set; }
@@ -23,7 +25,8 @@ namespace rookieTutorial.AdvancedFeature
             Console.WriteLine($"Id: {Id} Score: {Score} Height: {Height}");
         }
 
-        public static void MySort(Student[] arr, NeedSwap compare)
+        // public static void MySort(Student[] arr, NeedSwap compare)
+        public static void MySort(Student[] arr, Func<Student,Student,bool> compare)
         {
             for (int i = 0; i < arr.Length - 1; i++)
             {

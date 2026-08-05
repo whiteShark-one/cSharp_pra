@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using AdvancedFeature.rookieTutorial;
 using cSharp_pra.rookieTutorial;
 using rookieTutorial;
 using rookieTutorial.AdvancedFeature;
+using rookieTutorial.Basics;
 // using rookieTutorial;
 // using cSharp_pra.rookieTutorial.AdvancedFeature;
 
@@ -10,7 +12,7 @@ using rookieTutorial.AdvancedFeature;
 public delegate void showMessage(string msg);
 
 // 返回整型结果的委托
-public delegate int calcDelegate(int a,int b);
+public delegate int calcDelegate(int a, int b);
 
 namespace CSharp
 {
@@ -18,7 +20,7 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            
+
 
             // 菜鸟教程：基本语法
             SolutionRectangle rectangle = new SolutionRectangle();
@@ -66,13 +68,38 @@ namespace CSharp
             // manager.createProcess(321);
 
             // 创建闹钟触发到点事件，通知手机、人
-            AlarmClock alarm = new AlarmClock();
-            Phone phone = new Phone();
-            Person person = new Person();
-            alarm.alarmRing += phone.popNotice;
-            alarm.alarmRing += person.wakeUp;
-            alarm.startTiming(1);
-            
+            // AlarmClock alarm = new AlarmClock();
+            // Phone phone = new Phone();
+            // Person person = new Person();
+            // alarm.alarmRing += phone.popNotice;
+            // alarm.alarmRing += person.wakeUp;
+            // alarm.startTiming(1);
+
+            // 创建结构体
+            learnStruct ls = new learnStruct();
+            // ls.displayStruct();
+
+            // 了解泛型
+            // List<int> list = new List<int>();
+            // list.Add(1);
+            // list.Add(2);
+            learnGeneric lg = new learnGeneric();
+            // lg.displayStruct();
+            // int a = 3;
+            // int b = 9;
+            // Console.WriteLine($"{a}, {b}");
+            // lg.Swap<int>(ref a, ref b);
+            // // lg.Swap<int>(a, b);
+            // Console.WriteLine($"{a}, {b}");
+            // 另T为string
+            string a = "hello";
+            string b = "world";
+            Console.WriteLine($"{a}, {b}");
+            // lg.Swap<string>(ref a, ref b);
+            lg.Swap(ref a, ref b);
+            // lg.Swap<int>(a, b);
+            Console.WriteLine($"{a}, {b}");
+
         }
     }
 }

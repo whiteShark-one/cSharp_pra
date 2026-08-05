@@ -13,6 +13,11 @@ namespace AdvancedFeature.rookieTutorial
             2、可以把方法当做参数传入另一个方法；
             3、是实现回调、事件的底层基础。
         */
+        /*
+            Action()
+            Func()
+            Predicate()
+        */
         public static void Log(string content, showMessage printer)
         {
             printer(content);

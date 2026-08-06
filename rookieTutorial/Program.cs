@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 using AdvancedFeature.rookieTutorial;
 using cSharp_pra.rookieTutorial;
 using rookieTutorial;
@@ -18,7 +19,8 @@ namespace CSharp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
+        // static void Main(string[] args)
         {
 
 
@@ -92,13 +94,57 @@ namespace CSharp
             // // lg.Swap<int>(a, b);
             // Console.WriteLine($"{a}, {b}");
             // 另T为string
-            string a = "hello";
-            string b = "world";
-            Console.WriteLine($"{a}, {b}");
+            // string a = "hello";
+            // string b = "world";
+            // Console.WriteLine($"{a}, {b}");
             // lg.Swap<string>(ref a, ref b);
-            lg.Swap(ref a, ref b);
+            // lg.Swap(ref a, ref b);
             // lg.Swap<int>(a, b);
-            Console.WriteLine($"{a}, {b}");
+            // Console.WriteLine($"{a}, {b}");
+
+            // 了解异步async/await
+            learnAsynchronousAndParallel lap = new learnAsynchronousAndParallel();
+            // Console.WriteLine();
+            // Console.WriteLine("------调用同步longWork方法------");
+            // lap.longWork();
+            // Console.WriteLine("------结束同步longWork方法------");
+            // Console.WriteLine();
+            // Console.WriteLine("------调用异步longWorkAsync方法------");
+            // await lap.longWorkAsync();
+            // Console.WriteLine("------结束异步longWorkAsync方法------");
+            // Console.WriteLine();
+            // 同时启动多个异步任务，再一起等待
+            // Console.WriteLine();
+            // Task taskA = lap.AAsync();
+            // Task taskB = lap.BAsync();
+            // await Task.WhenAll(taskA,taskB);
+            // Console.WriteLine("全部任务执行完毕");
+            // Console.WriteLine();
+            // 启动3个延时异步任务
+            // Console.WriteLine();
+            // var t1 = lap.DelayAsync(1000);
+            // var t2 = lap.DelayAsync(1000);
+            // var t3 = lap.DelayAsync(1000);
+            // await Task.WhenAll(t1,t2,t3);
+            // Console.WriteLine("全部完成");
+            // Console.WriteLine();
+            // 启动点外卖、等外卖、吃外卖、学C#的任务
+            Console.WriteLine();
+            var sw = Stopwatch.StartNew();
+            lap.orderDelivery();
+            // lap.waitForDelivery();
+            // lap.learCsharp();
+            // lap.eatDelivery();
+            Task waitingTask = lap.waitForDelivery();
+            Task learningTask = lap.learCsharp();
+            
+            await waitingTask;
+            await lap.eatDelivery();
+            await learningTask;
+            
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed.TotalSeconds);
+            Console.WriteLine();
 
         }
     }

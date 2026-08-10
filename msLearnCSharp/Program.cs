@@ -13,15 +13,14 @@ namespace msLearnCSharp
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Hello World");
-
-            // 菜鸟教程：基本语法
+            #region 菜鸟教程：基本语法
             // SolutionRectangle rectangle = new SolutionRectangle();
             // // rectangle.SayHello(); 
             // rectangle.Acceptdetails();
             // rectangle.Display();
+            #endregion
 
-            // 部分1：使用 C 中的文本值和变量值存储和检索数据
+            #region 部分1：使用 C 中的文本值和变量值存储和检索数据
             // 练习-打印文本值
             Section1OfTextAndVariables u = new Section1OfTextAndVariables("Bob", 'm', 98, 12.235m, true);
             // 打印类的成员属性
@@ -36,8 +35,9 @@ namespace msLearnCSharp
             // ss.combineStr();
             // ss.innerStr();
             // ss.complish();
+            #endregion
 
-            // 部分1：对数字进行基本操作
+            #region 部分1：对数字进行基本操作
             Section1OfNumOpt sn = new Section1OfNumOpt();
             // sn.addtionUsingimpData();
             // sn.complexDataAdd();
@@ -47,53 +47,62 @@ namespace msLearnCSharp
             // sn.intToDecimal();
             // sn.intPD();
             // sn.tempConvert();
+            #endregion
 
-            // 部分1：计算和打印学生成绩
+            #region 部分1：计算和打印学生成绩
             Section1OfPrintStuScore sp = new Section1OfPrintStuScore();
             // sp.calStuToalScore();   // 计算每位同学的加和总成绩
             // sp.calStuAverScore();
+            #endregion
 
-            // 部分1：计算最终GPA
+            #region 部分1：计算最终GPA
             Section1OfCalFinGPA sc = new Section1OfCalFinGPA();
             // sc.storeEveryCourseS();
             // sc.calToalHoursAndGPA();
+            #endregion
 
-            // 部分2：调用.NET的方法
+            #region 部分2：调用.NET的方法
             Section2OfNetMethod snm = new Section2OfNetMethod();
             // snm.useNetMethod();
             // int firstValue = 500;
             // int secondValue = 600;
             // int largerValue = snm.greaterNum(firstValue, secondValue);
             // Console.WriteLine($"较大的数字： {largerValue}");
+            #endregion
 
-            // 部分2：添加判断逻辑
+            #region 部分2：添加判断逻辑
             Section2OfDecisionLogic sd = new Section2OfDecisionLogic();
             // sd.isRandomEqual();
             // sd.remindRent();
+            #endregion
 
-            // 部分2：使用循环数组
+            #region 部分2：使用循环数组
             Section2OfForEachAccess se = new Section2OfForEachAccess();
             // se.displayArray();
             // se.useforEach();
             // se.findBOrder();
+            #endregion
 
-            // 部分3：使用循环和条件评估学生分数
+            #region 部分3：使用循环和条件评估学生分数
             Section2OfUseLoopCon su = new Section2OfUseLoopCon();
             // su.estimateStu();
             // su.estimateStuEtrx();
+            #endregion
 
-            // 部分3：使用布尔表达式
+            #region 部分3：使用布尔表达式
             Section3OfCalBool s3c = new Section3OfCalBool();
             // s3c.useConOpt();
             // s3c.reverseCoins();
             // s3c.accessPer();
+            #endregion
 
-            // 部分3：使用switch-case
+            #region 部分3：使用switch-case
             Section3OfSwitchCase s3s = new Section3OfSwitchCase();
             // s3s.switchAndCase();
             // s3s.rewriteIfelseIf();
+            #endregion
 
-            // 部分3：使用do-while
+            #region 部分3：使用do-while
             Section3OfWhiledoWhile s3w = new Section3OfWhiledoWhile();
             // s3w.playHeroAndMon();
             // s3w.waitUserInput();
@@ -101,59 +110,68 @@ namespace msLearnCSharp
             // s3w.isInteger();
             // s3w.isstringrole();
             // s3w.dealStrs();
+            #endregion
 
-            // 部分3：使用条件和循环
+            #region 部分3：使用条件和循环
             Section3OfConAndLoop s3l = new Section3OfConAndLoop();
             // s3l.animalMap();
+            #endregion
 
-            // 部分4：选择整型类型
+            #region 部分4：选择整型类型
             Seciton4OfDataType s4d = new Seciton4OfDataType();
             // s4d.findInteger();
             // s4d.findFloat();
+            #endregion
 
-            // 部分4：数据类型转换
+            #region 部分4：数据类型转换
             Section4OfDataTypeConversion s4c = new Section4OfDataTypeConversion();
             // s4c.combineIntAndString();
             // s4c.exeDataConversion();
             // s4c.checkTryParse();
             // s4c.combineStringAndNum();
             // s4c.numOptToSpeNum();
+            #endregion
 
-            // 部分4：操作数组
+            #region 部分4：操作数组
             Section4OfOptArray s4o = new Section4OfOptArray();
             // s4o.findSortAndReverse();
             // s4o.findClearAndResize();
             // s4o.findSplitAndJoin();
             // s4o.reverseSpellWords();
             // s4o.outErrorOrder();
+            #endregion
 
-            // 部分4：字符串和数字的格式设置
+            #region 部分4：字符串和数字的格式设置
             Section4OfStringNumFormat s4s = new Section4OfStringNumFormat();
             // s4s.learnStringFormatSet();
             // s4s.findStringInner();
             // s4s.learnPaddingAndAlignment();
             // s4s.accStringInnerLetters();
+            #endregion
 
-            // 部分4：使用 C# 中的内置字符串数据类型方法修改字符串内容
+            #region 部分4：使用 C# 中的内置字符串数据类型方法修改字符串内容
             Section4OfStringBuildInMethod s4b = new Section4OfStringBuildInMethod();
             // s4b.learnIndexOfAndSubstring();
             // s4b.leadIndexOfAndLastIndexOf();
             // s4b.learnRemoveAndReplace();
             // s4b.dealString();
+            #endregion
 
-            // 部分4：在C#中使用变量数据
+            #region 部分4：在C#中使用变量数据
             Section4OfUseVariables s4u = new Section4OfUseVariables();
             // s4u.useVariablesOne();
             // s4u.accVariablesOne();
+            #endregion
 
-            // 部分5：编写C#方法
+            #region 部分5：编写C#方法
             Section5OfCreateMethod s5c = new Section5OfCreateMethod();
             // s5c.SayHello();
             // s5c.markReCode();
             // s5c.isIPv4();
             // s5c.tellFortune();
+            #endregion
 
-            // 部分5：了解方法范围
+            #region 部分5：了解方法范围
             Section5OfCMethodByParam s5p = new Section5OfCMethodByParam();
             // s5p.PrintCircleArea(4);
             // s5p.PrintCircleCircumference(4);
@@ -185,8 +203,9 @@ namespace msLearnCSharp
             // s5p.ShowRSVPs();
             // 练习：显示电子邮件地址
             // s5p.showEmailAdr();
+            #endregion
 
-            // 部分5：创建返回值的方法
+            #region 部分5：创建返回值的方法
             Section5OfReturnParm s5r = new Section5OfReturnParm();
             // s5r.initalInput();
             // double usd = 23.73;
@@ -197,12 +216,14 @@ namespace msLearnCSharp
             string input = "there are snakes at the zoo";
             // Console.WriteLine(input);
             // Console.WriteLine(s5r.ReverseSentence(input));
+            #endregion
 
-            // 从方法中返回布尔值
+            #region 从方法中返回布尔值
             string[] words = { "racecar", "talented", "deified", "tent", "tenet" };
             // Console.WriteLine("Is it a palindrome?");
+            #endregion
 
-            // 从方法中返回数组
+            #region 从方法中返回数组
             // int target = 60;
             // int[] coins = new int[] { 5, 5, 50, 25, 25, 10, 5 };
             // int[] result = s5r.TwoCoins(coins, target);
@@ -228,11 +249,13 @@ namespace msLearnCSharp
             //         Console.WriteLine($"{result[i, 0]},{result[i, 1]}");
             //     }
             // }
+            #endregion
 
-            // 骰子小游戏
+            #region 骰子小游戏
             // s5r.PlayGame();
+            #endregion
 
-            // 计划参观动物园
+            #region 计划参观动物园
             Section5OfVisitZoo s5v = new Section5OfVisitZoo();
             // s5v.RandomizeAnimals();
             // Console.WriteLine("School A");
@@ -243,8 +266,9 @@ namespace msLearnCSharp
 
             Section5OfPlayerEatFood s5e = new Section5OfPlayerEatFood();
             // s5e.StartGame();
+            #endregion
 
-            // 部分6：运行和调试代码
+            #region 部分6：运行和调试代码
             Section6OfReRunPri s6r = new Section6OfReRunPri();
             // s6r.runStringError();
             // s6r.runGreeting();
@@ -267,18 +291,17 @@ namespace msLearnCSharp
             // Console.WriteLine("Exit program");
             // s6c.allException();
             // s6c.catchSpecificError();
+            #endregion
 
-            // 部分6：创建和引发异常
+            #region 部分6：创建和引发异常
             Section6OfCreateErrorObject s6o = new Section6OfCreateErrorObject();
             // s6o.indictError();
             // s6o.induceErrorPra2();
             // s6o.unnormalError();
-
             Section6OfDeBugError s6b = new Section6OfDeBugError();
             s6b.useCashChange();
+            #endregion
         }
-
-
     }
 }
 

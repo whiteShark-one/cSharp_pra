@@ -9,16 +9,31 @@ namespace rookieTutorial.AdvancedFeature
     // public delegate bool NeedSwap(Student a, Student b);
     // 使用Func() 定义标准委托
 
+    public delegate bool NeedSwap(Student a, Student b);
+    // [Author("李珅",Version = "1.0.0")] // Author和AuthorAttribute两种写法都可
+    // [AuthorAttribute("李珅",Version ="1.0.0")]
+    // [Remark(Info = "学生实体类，用于存储账号信息")] // 采用该写法，会先调用无参构造函数，需要先手写无参构造函数
+    [Remark("学生实体类，用于存储账号信息")]
     public class Student
     {
         public int Id { get; set; }
         public int Score { get; set; }
         public double Height { get; set; }
+        public Student(){}
         public Student(int id, int score, double height)
         {
             Id = id;
             Score = score;
             Height = height;
+        }
+        [Author("李珅")]
+        public void Study()
+        {
+            
+        }
+        public void sayHi(string msg)
+        {
+            Console.WriteLine($"Hi,{Id},{msg}");
         }
         public void Show()
         {

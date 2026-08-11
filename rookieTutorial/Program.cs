@@ -214,19 +214,26 @@ namespace CSharp
             #endregion
 
             #region 特性控制方向输出
-            var d1 = Direction1.East | Direction1.South;
-            Console.WriteLine($"我是Direction1，我有Flags特性，我ToString()后是：");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(d1);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
-            var d2 = Direction1.East | Direction1.South;
-            Console.WriteLine($"我是Direction1，我什么也没有，我ToString()后是：");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(d2);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
+            // var d1 = Direction1.East | Direction1.South;
+            // Console.WriteLine($"我是Direction1，我有Flags特性，我ToString()后是：");
+            // Console.ForegroundColor = ConsoleColor.Red;
+            // Console.WriteLine(d1);
+            // Console.ForegroundColor = ConsoleColor.White;
+            // Console.WriteLine();
+            // var d2 = Direction1.East | Direction1.South;
+            // Console.WriteLine($"我是Direction1，我什么也没有，我ToString()后是：");
+            // Console.ForegroundColor = ConsoleColor.Red;
+            // Console.WriteLine(d2);
+            // Console.ForegroundColor = ConsoleColor.White;
+            // Console.WriteLine();
             #endregion
+
+            #region 了解队列Queue
+            learnQueue q = new learnQueue();
+            q.optQueueMethod();
+            #endregion
+
+            
         }
     }
 }

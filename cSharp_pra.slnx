@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="CommonLib/CommonLib.csproj" />
+  <Project Path="learnAoiVision/learnAoiVision.csproj" />
   <Project Path="msLearnCSharp/msLearnCSharp.csproj" />
   <Project Path="rookieTutorial/rookieTutorial.csproj" />
 </Solution>

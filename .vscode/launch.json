@@ -24,6 +24,18 @@
             // "console": "externalTerminal",
             "console": "integratedTerminal ",
             "stopAtEntry": false
+        },
+        {
+            "name": "启动 learnAoiVision",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-learnAoiVision",
+            "program": "${workspaceFolder}/learnAoiVision/bin/Debug/net10.0/learnAoiVision.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/learnAoiVision",
+            // "console": "externalTerminal",
+            "console": "integratedTerminal ",
+            "stopAtEntry": false
         }
     ]
 }

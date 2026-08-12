@@ -229,11 +229,47 @@ namespace CSharp
             #endregion
 
             #region 了解队列Queue
-            learnQueue q = new learnQueue();
-            q.optQueueMethod();
+            // learnQueue q = new learnQueue();
+            // q.optQueueMethod();
             #endregion
 
-            
+            #region 了解多线程
+            // Thread th = Thread.CurrentThread;
+            // th.Name = "MainThread";
+            // Console.WriteLine("This is {0}",th.Name);
+            // Console.WriteLine();
+            learnThread lt = new learnThread();
+            // #1 创建线程
+            // lt.createNewThread();
+            // #2 管理线程
+            // #3 销毁线程
+            // 终止子线程
+            // Console.WriteLine("In Main: Aborting the Child thread");
+
+            // Task + CancellationTokenSource + CancellationToken
+            using CancellationTokenSource cts = new CancellationTokenSource();
+            // Task.Run 把工作放到线程池后台执行
+            var task = Task.Run(async () =>
+            {
+                await lt.learnCancellationTokenSource(cts.Token);
+            }, cts.Token);
+
+            Console.WriteLine("按任意键取消");
+            Console.ReadKey();
+            // 发出取消信号
+            cts.Cancel();
+            try
+            {
+                await task;
+            }
+            catch (OperationCanceledException)
+            {
+                Console.WriteLine("任务被正常取消");
+            }
+            Console.WriteLine("程序结束");
+
+            #endregion
+
         }
     }
 }

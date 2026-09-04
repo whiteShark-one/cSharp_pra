@@ -13,6 +13,10 @@ namespace rookieTutorial.AsyncMultiThread
             3. CPU 密集批量循环 → Parallel
             4. 多线程共享数据：优先用 并发集合；复杂临界区使用锁机制。
         */
+        /*
+            现代异步编程请使用 Task + async/await，这并非“多线程”，而是基于线程池的高效异步模型。
+            如果只是想执行耗时操作而不阻塞 UI，请直接用 Task.Run 配合 await，这已经是 C# 的官方最佳实践。
+        */
         
         /// <summary>
         /// 1、使用 Thread 类 （原生操作系统线程）
@@ -23,12 +27,19 @@ namespace rookieTutorial.AsyncMultiThread
         */
         /* 常用类和方法
             - `Start()`：启动线程
-            - `Join()`：等待线程执行完毕，可设置超时
+            - `Join()`：等待线程执行完毕，可设置超时。Join() 的作用是让调用它的线程（通常是主线程/老板）暂停执行，直到目标线程（子线程/员工）执行完毕，才继续往下走。
             - `Sleep()`：让当前线程休眠阻塞
-            - `IsBackground`：设置是否后台线程，程序退出后台线程直接结束
+            - `IsBackground`：设置是否后台线程，程序退出后台线程直接结束。IsBackground 决定了线程是前台线程（Foreground）还是后台线程（Background）。它直接影响整个进程（公司）的生命周期。
             - `IsAlive`：判断线程是否还在运行
             - `Priority`：设置线程优先级
             > 适用：长驻循环工作线程；开销大，手动管理生命周期。
+        */
+        /*
+            Thread中Join()和IsBackground搭配的4种情况（假设子线程需要运行 5 秒，主线程代码 1 秒 run 完）
+                1、IsBackground = false，不Join()；主线程 1 秒后结束，但进程不退出。等子线程 5 秒跑完后，进程才退出。
+                2、IsBackground = true，不Join()；主线程 1 秒后结束，进程立刻退出。子线程被瞬间强杀，只跑了 1 秒。
+                3、IsBackground = false，Join()；主线程被阻塞 5 秒。5 秒后子线程结束，主线程继续跑，然后进程退出。
+                4、IsBackground = true，Join()；主线程被阻塞 5 秒（强行等临时工干完）。5 秒后子线程结束，主线程继续跑，然后进程退出。
         */
         public static void ThreadMethod()
         {
@@ -41,7 +52,6 @@ namespace rookieTutorial.AsyncMultiThread
                 Thread.Sleep(100);
             }
         }
-
 
         /// <summary>
         /// 2、使用 ThreadPool 类
@@ -66,6 +76,12 @@ namespace rookieTutorial.AsyncMultiThread
                 Thread.Sleep(100);
             }
         }
+        /*
+            ThreadPool和Task底层原理和写法区别？
+                虽然理解 ThreadPool 的底层原理很重要，但在现代 C# 开发中，我们几乎不再直接调用 ThreadPool.QueueUserWorkItem。
+                微软推出了更高级的 Task (TPL - Task Parallel Library)，它底层默认就是基于线程池实现的，但提供了更好的返回值、异常处理、链式调用和 async/await 支持。
+            注意两者区别和写法
+        */
 
         /// <summary>
         /// 3、使用 Task 类 （现代首选，基于线程池，支持 await）

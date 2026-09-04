@@ -6,6 +6,7 @@ using AdvancedFeature.rookieTutorial;
 using cSharp_pra.rookieTutorial;
 using rookieTutorial;
 using rookieTutorial.AdvancedFeature;
+using rookieTutorial.AsyncMultiThread;
 using rookieTutorial.Basics;
 // using rookieTutorial;
 // using cSharp_pra.rookieTutorial.AdvancedFeature;
@@ -247,29 +248,124 @@ namespace CSharp
             // Console.WriteLine("In Main: Aborting the Child thread");
 
             // Task + CancellationTokenSource + CancellationToken
-            using CancellationTokenSource cts = new CancellationTokenSource();
+            // using CancellationTokenSource cts = new CancellationTokenSource();
             // Task.Run 把工作放到线程池后台执行
-            var task = Task.Run(async () =>
-            {
-                await lt.learnCancellationTokenSource(cts.Token);
-            }, cts.Token);
+            // var task = Task.Run(async () =>
+            // {
+            //     await lt.learnCancellationTokenSource(cts.Token);
+            // }, cts.Token);
 
-            Console.WriteLine("按任意键取消");
-            Console.ReadKey();
+            // Console.WriteLine("按任意键取消");
+            // Console.ReadKey();
             // 发出取消信号
-            cts.Cancel();
-            try
-            {
-                await task;
-            }
-            catch (OperationCanceledException)
-            {
-                Console.WriteLine("任务被正常取消");
-            }
-            Console.WriteLine("程序结束");
+            // cts.Cancel();
+            // try
+            // {
+            //     await task;
+            // }
+            // catch (OperationCanceledException)
+            // {
+            //     Console.WriteLine("任务被正常取消");
+            // }
+            // Console.WriteLine("程序结束");
 
             #endregion
 
+            #region 线程创建的4种方式
+            // MultiThread multiThread = new MultiThread();
+            // #1 Thread类
+            // MultiThread.ThreadMethod();
+
+            // 员工干活的例子（包含Join()的用法）
+            // Thread worker = new Thread(() =>
+            // {
+            //     Console.WriteLine("员工：开始搬砖...");
+            //     Thread.Sleep(3000); // 模拟干活3秒
+            //     Console.WriteLine("员工：搬砖结束");
+            // }); 
+            // worker.Start();
+
+            // Join()的用法: 老板（主线程）在这里被阻塞，等待 worker 结束
+            // Console.WriteLine("老板：我在等员工干完活...");
+            // worker.Join();
+            // Console.WriteLine("老板：员工干完了，我继续去开会。");
+            // Join()超时：
+            // bool isFinished = worker.Join(2000);
+            // if(isFinished)
+            // {
+            //     Console.WriteLine("员工在2s内干完了");
+            //     Console.WriteLine("老板：员工干完了，我继续去开会。");
+            // } else
+            // {
+            //     Console.WriteLine("超时了不等，老板先走了");
+            // }
+            // isBackground()用法：设置为后台线程，进程结束会被直接杀死
+            // 保洁打扫卫生（包含IsBackground()的用法） -> 如果被设置为后台线程，若未执行完毕，会被进程直接杀死
+            // Thread cleaner = new Thread(() =>
+            // {
+            //     Console.WriteLine("保洁开始打扫卫生");
+            //     Thread.Sleep(3000);
+            //     Console.WriteLine("保洁：打扫完毕！（这句话永远不会打印）");
+            // });
+            // cleaner.IsBackground = true;
+            // cleaner.Start();
+            // 主线程 join等待后台线程
+            // Console.WriteLine("老板要等保洁打扫完再下班");
+            // cleaner.Join();
+            // Console.WriteLine("保洁已经打扫完，老板也下班了");
+            // Console.WriteLine("老板（主线程/前台）：今天工作结束，我下班了！");// 主线程（前台）执行完毕。此时 CLR 发现没有前台线程了，直接关闭进程。保洁阿姨（后台线程）被瞬间强制杀死。
+
+            // #2 ThreadPool
+            // MultiThread.ThreadPoolMethod();
+
+            // #3 Task
+            // 无返回值
+            // Task t = Task.Run(() =>
+            // {
+            //     Console.WriteLine("Task运行在线程池");
+            //     Thread.Sleep(1000);
+            // });
+            // 带返回值
+            // Task<int> t2 = Task.Run(() =>
+            // {
+            //     return 100;
+            // });
+            // int res = await t2;
+            // Console.WriteLine($"res的值：{res}");
+            // await t;
+            // 支持取消 CancellationTokenSource
+            /*
+                - `CancellationTokenSource` → 控制器，你来调用 `cts.Cancel()` 发取消信号
+                - `cts.Token` → 令牌，传给任务，任务内部监视这个令牌
+                - `ThrowIfCancellationRequested()`：检查是否收到取消信号，如果收到，直接抛异常终止任务
+            */
+            // using var cts = new CancellationTokenSource();
+            // CancellationToken token = cts.Token;
+            // Task t3 = Task.Run(async () =>
+            // {
+            //     for (int i = 0; i < 10; i++)
+            //     {
+            //         // 每一轮循环检测是否取消
+            //         token.ThrowIfCancellationRequested();
+            //         Console.WriteLine($"正在运行i= {i}");
+            //         // 把token传给Delay，Delay内部会监听取消信号
+            //         await Task.Delay(300,token);
+            //     }
+            // }, token);
+            // Console.WriteLine("按任意键取消任务");
+            // Console.ReadKey();
+            // // 发出取消信号
+            // cts.Cancel();
+            // try
+            // {
+            //     await t3;
+            // }
+            // catch
+            // {
+            //     Console.WriteLine("任务被正常取消");
+            // }
+            Qwen上Task的代码实例
+            #endregion
         }
     }
 }

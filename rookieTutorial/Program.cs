@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 using AdvancedFeature.rookieTutorial;
 using cSharp_pra.rookieTutorial;
 using rookieTutorial;
@@ -369,23 +370,59 @@ namespace CSharp
 
             // 例 2：并行执行多个任务（Task.WhenAll）
             // 场景：同时下载 3 个文件，全部下载完再合并。
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            Task<string> t1 = MultiThread.DownloadAsync("文件A", 1000);
-            Task<string> t2 = MultiThread.DownloadAsync("文件B", 2000);
-            Task<string> t3 = MultiThread.DownloadAsync("文件C",1500);
-            string[] results = await Task.WhenAll(t1,t2,t3);
-            sw.Stop();
-            Console.WriteLine($"所有下载完成，结果: {string.Join(", ", results)}");
-            Console.WriteLine($"总耗时: {sw.ElapsedMilliseconds}ms"); 
+            Console.WriteLine("=== 例2：并行异步下载多个文件 ===");
+            // Stopwatch sw = new Stopwatch();
+            // sw.Start();
+            // Task<string> t1 = MultiThread.DownloadAsync("文件A", 1000);
+            // Task<string> t2 = MultiThread.DownloadAsync("文件B", 2000);
+            // Task<string> t3 = MultiThread.DownloadAsync("文件C",1500);
+            // string[] results = await Task.WhenAll(t1,t2,t3);
+            // sw.Stop();
+            // Console.WriteLine($"所有下载完成，结果: {string.Join(", ", results)}");
+            // Console.WriteLine($"总耗时: {sw.ElapsedMilliseconds}ms"); 
             // 输出约 2000ms（取最慢的那个），而不是 1000+2000+1500=4500ms
 
             // 例 3：竞速模式与超时控制（Task.WhenAny）
             // 场景：调用一个接口，如果 3 秒内没返回，就认为超时。
+            // Console.WriteLine("=== 例3：超时控制 ===");
+            // Task<string> apiTask = MultiThread.CallSlowAsync();
+            // Task timeoutTask = Task.Delay(3000);
+            // Task completedTask = await Task.WhenAny(apiTask,timeoutTask);
+            // if(completedTask == timeoutTask)
+            // {
+            //     Console.WriteLine("❌ 请求超时！");
+            // } else
+            // {
+            //     string data = await apiTask;
+            //     Console.WriteLine($"✅ 获取数据: {data}");
+            // }
 
             // 例 4：取消任务（CancellationToken）
             // 场景：用户点击“取消下载”按钮。
-
+            Console.WriteLine("=== 例4：取消任务 ===");
+            using CancellationTokenSource cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
+            // 模拟：3s后自动取消
+            cts.CancelAfter(2000);
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    Console.WriteLine("开始下载大文件...");
+                    for (int i = 0; i < 10; i++)
+                    {
+                        // 检查是否被取消
+                        token.ThrowIfCancellationRequested();
+                        Console.WriteLine($"下载进度: {(i + 1) * 10}%");
+                        // await Task.Delay(2000);
+                        Thread.Sleep(400); // Task.Delay和Thread.sleep有什么区别？
+                    }
+                    Console.WriteLine("下载完成");
+                },token);
+            } catch(OperationCanceledException)
+            {
+                Console.WriteLine("任务已被用户取消");
+            }
             // 例 5：异常处理
 
             // 例 6：真正的异步 IO（不占用线程）

@@ -123,6 +123,12 @@ namespace rookieTutorial.AsyncMultiThread
             return $"{name}的数据";
         }
 
+        public static async Task<string> CallSlowAsync()
+        {
+            await Task.Delay(5000);
+            return "API 响应数据";
+        }
+
         /// <summary>
         /// 4、使用 Parallel 类
         /// </summary>

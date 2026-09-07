@@ -17,7 +17,7 @@ namespace rookieTutorial.AsyncMultiThread
             现代异步编程请使用 Task + async/await，这并非“多线程”，而是基于线程池的高效异步模型。
             如果只是想执行耗时操作而不阻塞 UI，请直接用 Task.Run 配合 await，这已经是 C# 的官方最佳实践。
         */
-        
+
         /// <summary>
         /// 1、使用 Thread 类 （原生操作系统线程）
         /// </summary>
@@ -90,6 +90,12 @@ namespace rookieTutorial.AsyncMultiThread
             Task类提供了一个基于任务的多线程模型，它是Thread和ThreadPool的高级抽象。Task可以获取线程的返回值，定义连续的任务，以及创建任务层次结构。
             Task通常使用线程池中的线程，但也可以通过TaskCreationOptions.LongRunning属性来指示创建一个新的线程。
         */
+        /*
+            表示一个异步操作：它不代表线程本身，而是代表一个未来的结果（Promise）。
+            统一异步模型：无论是 CPU 密集型计算，还是 IO 密集型操作（网络、磁盘），都用 Task 来表示。
+            支持组合与编排：可以轻松实现并行、串行、超时、取消、异常聚合等复杂逻辑。
+            async/await 的基石：await 后面跟的就是 Task。
+        */
         /* 常用类和方法
             - `Task.Run()`：在线程池启动任务
             - `Factory.StartNew()`：高级创建任务，可配置选项
@@ -107,6 +113,14 @@ namespace rookieTutorial.AsyncMultiThread
                 Console.WriteLine($"TaskMethod 主线程开始工作：{i}");
                 Task.Delay(100).Wait();
             }
+        }
+
+        public static async Task<string> DownloadAsync(string name, int delay)
+        {
+            Console.WriteLine($"{name} 开始下载...");
+            await Task.Delay(delay); // 模拟 IO 等待，不占用线程
+            Console.WriteLine($"{name} 下载完成！");
+            return $"{name}的数据";
         }
 
         /// <summary>

@@ -364,8 +364,34 @@ namespace CSharp
             // {
             //     Console.WriteLine("任务被正常取消");
             // }
-            Qwen上Task的代码实例
+            // Qwen上Task的代码实例
+            // 例 1：基础用法（无返回值 & 有返回值）
+
+            // 例 2：并行执行多个任务（Task.WhenAll）
+            // 场景：同时下载 3 个文件，全部下载完再合并。
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            Task<string> t1 = MultiThread.DownloadAsync("文件A", 1000);
+            Task<string> t2 = MultiThread.DownloadAsync("文件B", 2000);
+            Task<string> t3 = MultiThread.DownloadAsync("文件C",1500);
+            string[] results = await Task.WhenAll(t1,t2,t3);
+            sw.Stop();
+            Console.WriteLine($"所有下载完成，结果: {string.Join(", ", results)}");
+            Console.WriteLine($"总耗时: {sw.ElapsedMilliseconds}ms"); 
+            // 输出约 2000ms（取最慢的那个），而不是 1000+2000+1500=4500ms
+
+            // 例 3：竞速模式与超时控制（Task.WhenAny）
+            // 场景：调用一个接口，如果 3 秒内没返回，就认为超时。
+
+            // 例 4：取消任务（CancellationToken）
+            // 场景：用户点击“取消下载”按钮。
+
+            // 例 5：异常处理
+
+            // 例 6：真正的异步 IO（不占用线程）
+            // 核心区别：Task.Run 是占用一个线程池线程去干活（CPU 密集）。而真正的异步 IO（如 HttpClient、FileStream）是操作系统层面的异步，等待期间不占用任何线程。
             #endregion
+
         }
     }
 }

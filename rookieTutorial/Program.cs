@@ -399,34 +399,54 @@ namespace CSharp
 
             // 例 4：取消任务（CancellationToken）
             // 场景：用户点击“取消下载”按钮。
-            Console.WriteLine("=== 例4：取消任务 ===");
-            using CancellationTokenSource cts = new CancellationTokenSource();
-            CancellationToken token = cts.Token;
-            // 模拟：3s后自动取消
-            cts.CancelAfter(2000);
-            try
-            {
-                await Task.Run(async () =>
-                {
-                    Console.WriteLine("开始下载大文件...");
-                    for (int i = 0; i < 10; i++)
-                    {
-                        // 检查是否被取消
-                        token.ThrowIfCancellationRequested();
-                        Console.WriteLine($"下载进度: {(i + 1) * 10}%");
-                        // await Task.Delay(2000);
-                        Thread.Sleep(400); // Task.Delay和Thread.sleep有什么区别？
-                    }
-                    Console.WriteLine("下载完成");
-                },token);
-            } catch(OperationCanceledException)
-            {
-                Console.WriteLine("任务已被用户取消");
-            }
+            // Console.WriteLine("=== 例4：取消任务 ===");
+            // using CancellationTokenSource cts = new CancellationTokenSource();
+            // CancellationToken token = cts.Token;
+            // // 模拟：3s后自动取消
+            // cts.CancelAfter(2000);
+            // try
+            // {
+            //     await Task.Run(async () =>
+            //     {
+            //         Console.WriteLine("开始下载大文件...");
+            //         for (int i = 0; i < 10; i++)
+            //         {
+            //             // 检查是否被取消
+            //             token.ThrowIfCancellationRequested();
+            //             Console.WriteLine($"下载进度: {(i + 1) * 10}%");
+            //             await Task.Delay(400);
+            //             // Thread.Sleep(400); // Task.Delay和Thread.sleep有什么区别？
+            //         }
+            //         Console.WriteLine("下载完成");
+            //     },token);
+            // } catch(OperationCanceledException)
+            // {
+            //     Console.WriteLine("任务已被用户取消");
+            // }
             // 例 5：异常处理
-
+            // Console.WriteLine("=== 例5：异常处理 ===");
+            // try
+            // {
+            //     Task t1 = Task.Run(() => throw new Exception("task1出现问题"));
+            //     Task t2 = Task.Run(() => {throw new Exception("task2也坏了");});
+            //     await Task.WhenAll(t1,t2);
+            // }catch(Exception ex)
+            // {
+            //     Console.WriteLine($"捕获到异常: {ex.Message}");
+            //     // ⚠️ 注意：await 只抛出第一个异常。
+            //     // 如果需要获取所有异常，需要检查 Task.Exception（AggregateException）
+            //     // 但在 async/await 模式下，通常捕获第一个就够了。
+            // }
             // 例 6：真正的异步 IO（不占用线程）
             // 核心区别：Task.Run 是占用一个线程池线程去干活（CPU 密集）。而真正的异步 IO（如 HttpClient、FileStream）是操作系统层面的异步，等待期间不占用任何线程。
+            // Console.WriteLine("=== 例6：真正的异步 IO ===");
+            // using HttpClient httpClient = new HttpClient();
+            // Console.WriteLine("发起请求..");
+            // // 这里不会阻塞线程！线程被释放回线程池去处理其他请求。
+            // // 等网络响应回来后，线程池再分配一个线程继续执行后续代码。
+            // string html = await httpClient.GetStringAsync("https://example.com");
+
+            // Console.WriteLine($"获取到 {html.Length} 个字符");
             #endregion
 
         }

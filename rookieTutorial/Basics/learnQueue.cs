@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,6 +52,65 @@ namespace rookieTutorial.Basics
             Console.WriteLine();
             queue.Clear();
             Console.WriteLine($"清空后数量：{queue.Count}");
+        }
+
+        /*  ConcurrentQueue
+            方法/属性	        作用
+            Enqueue()	        添加数据
+            TryDequeue()	    尝试取出数据
+            TryPeek()	        查看队头但不删除
+            IsEmpty	            判断是否为空
+            Count	            获取队列数量
+            Clear()	            清空队列
+            ToArray()	        转换成数组
+        */
+        public void optConcurrentQueue()
+        {
+            ConcurrentQueue<int> cqueue = new ConcurrentQueue<int>();
+            cqueue.Enqueue(10);
+            cqueue.Enqueue(20);
+            // TryDeque()
+            // if (cqueue.TryDequeue(out int val))
+            // {
+            //     Console.WriteLine(val);
+            // } else
+            // {
+            //     Console.WriteLine("队列为空");
+            // }
+            // TryPeek()
+            // if (cqueue.TryPeek(out int val))
+            // {
+            //     Console.WriteLine(val);
+            // }
+            // 单线程消费数据
+            while (cqueue.TryDequeue(out int val))
+            {
+                Console.WriteLine($"消费数据：{val}");
+            }
+        }
+        // 多线程生产/消费
+        static ConcurrentQueue<int> queue = new();
+        public static void Producer()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                queue.Enqueue(i);
+                Console.WriteLine($"生产：{i}");
+                Thread.Sleep(10);
+            }
+        }
+        public static void Consumer()
+        {
+            while (true)
+            {
+                if(queue.TryDequeue(out int val))
+                {
+                    Console.WriteLine($"消费：{val}");
+                } else
+                {
+                    Thread.Sleep(10);
+                }
+            }
         }
     }
 }

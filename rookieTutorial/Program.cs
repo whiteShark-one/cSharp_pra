@@ -231,8 +231,14 @@ namespace CSharp
             #endregion
 
             #region 了解队列Queue
-            // learnQueue q = new learnQueue();
+            learnQueue q = new learnQueue();
             // q.optQueueMethod();
+            // q.optConcurrentQueue();
+            // Thread producer = new Thread(learnQueue.Producer);
+            // Thread consumer = new Thread(learnQueue.Consumer);
+            // producer.Start();
+            // consumer.Start();
+            // producer.Join();
             #endregion
 
             #region 了解多线程
@@ -367,10 +373,9 @@ namespace CSharp
             // }
             // Qwen上Task的代码实例
             // 例 1：基础用法（无返回值 & 有返回值）
-
             // 例 2：并行执行多个任务（Task.WhenAll）
             // 场景：同时下载 3 个文件，全部下载完再合并。
-            Console.WriteLine("=== 例2：并行异步下载多个文件 ===");
+            // Console.WriteLine("=== 例2：并行异步下载多个文件 ===");
             // Stopwatch sw = new Stopwatch();
             // sw.Start();
             // Task<string> t1 = MultiThread.DownloadAsync("文件A", 1000);
@@ -381,7 +386,6 @@ namespace CSharp
             // Console.WriteLine($"所有下载完成，结果: {string.Join(", ", results)}");
             // Console.WriteLine($"总耗时: {sw.ElapsedMilliseconds}ms"); 
             // 输出约 2000ms（取最慢的那个），而不是 1000+2000+1500=4500ms
-
             // 例 3：竞速模式与超时控制（Task.WhenAny）
             // 场景：调用一个接口，如果 3 秒内没返回，就认为超时。
             // Console.WriteLine("=== 例3：超时控制 ===");
@@ -396,7 +400,6 @@ namespace CSharp
             //     string data = await apiTask;
             //     Console.WriteLine($"✅ 获取数据: {data}");
             // }
-
             // 例 4：取消任务（CancellationToken）
             // 场景：用户点击“取消下载”按钮。
             // Console.WriteLine("=== 例4：取消任务 ===");
@@ -445,10 +448,159 @@ namespace CSharp
             // // 这里不会阻塞线程！线程被释放回线程池去处理其他请求。
             // // 等网络响应回来后，线程池再分配一个线程继续执行后续代码。
             // string html = await httpClient.GetStringAsync("https://example.com");
-
             // Console.WriteLine($"获取到 {html.Length} 个字符");
+
+            // #4 Parallel类
+            // 例1：Parallel.Invoke —— 并行执行多个独立任务
+            // Console.WriteLine("=== 例1：Parallel.Invoke ===");
+            // Stopwatch sw = new Stopwatch();
+            // sw.Start();
+            // Parallel.Invoke(
+            //     () => MultiThread.InitializeDatabase(),
+            //     () => MultiThread.LoadConfiguration(),
+            //     () => MultiThread.WarmUpCache()
+            // );
+            // sw.Stop();
+            // Console.WriteLine($"耗时：{sw.ElapsedMilliseconds}");
+            // 例 2：Parallel.For —— 并行处理数值计算
+            // 场景：计算 1 到 10000 每个数的平方（CPU 密集型）。
+            // Console.WriteLine("=== 例2：Parallel.For ===");
+            // long[] res = new long[10000];
+            // // 并行执行 0 到 9999
+            // Stopwatch sw = new Stopwatch();
+            // sw.Start();
+            // Parallel.For(0,10000,i =>
+            // {
+            //     res[i] = i * i;
+            // });
+            // Console.WriteLine($"计算完成，第 100 个结果: {res[100]}");
+            // sw.Stop();
+            // Console.WriteLine($"耗时：{sw.ElapsedMilliseconds}");
+            // 例3：Parallel.ForEach —— 并行处理集合
+            // 模拟获取一批文件路径
+            // var files = new List<string> { "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg" };
+            // Parallel.ForEach(files, file =>
+            // {
+            //     Console.WriteLine($"正在处理 {file}，线程: {Environment.CurrentManagedThreadId}");
+            //     Thread.Sleep(1000); // 模拟耗时的图片压缩
+            //     Console.WriteLine($"{file} 处理完成！");
+            // });
+            // Console.WriteLine("所有图片处理完毕！");
+            // 例 4：使用 ParallelOptions 控制并发度 + 取消
+            // 场景：限制最多同时处理 4 个文件，避免内存爆炸；支持用户取消。
+            // Console.WriteLine("=== 例4：ParallelOptions ===");
+            // using CancellationTokenSource cts = new();
+            // Stopwatch sw = new Stopwatch();
+            // sw.Start();
+            // 模拟 5s后自动取消
+            // cts.CancelAfter(5000);
+            // var options = new ParallelOptions
+            // {
+            //     MaxDegreeOfParallelism = 4, //最多使用4个线程
+            //     CancellationToken = cts.Token
+            // };
+            // var items = Enumerable.Range(1, 20).ToList();
+            // try
+            // {
+            //     Parallel.ForEach(items, options, item =>
+            //     {
+            //         // 检查取消
+            //         options.CancellationToken.ThrowIfCancellationRequested();
+            //         Console.WriteLine($"处理项目 {item}");
+            //         Thread.Sleep(100);
+            //     });
+            //     Console.WriteLine("✅ 全部完成！");
+            // }
+            // catch (OperationCanceledException)
+            // {
+            //     Console.WriteLine("⚠️ 任务被取消！");
+            // }
+            // sw.Stop();
+            // Console.WriteLine($"耗时：{sw.ElapsedMilliseconds}");
+            // 例 5：使用 ParallelLoopState 提前退出
+            // 场景：在集合中查找第一个满足条件的元素，找到后立即停止。
+            // Console.WriteLine("=== 例5：ParallelLoopState ===");
+            // var numbers = Enumerable.Range(1, 1000000).ToList();
+            // int foundNumber = -1;
+            /*
+                Parallel.ForEach()的重载版本 对应的委托签名 -> Action<TSource, ParallelLoopState, long> 
+                    - 这个重载没有线程本地状态，第三个参数就是元素索引。
+                    - num → TSource：当前循环拿到的集合元素（这里就是 numbers 里的 int 数字）
+                    - state → ParallelLoopState：循环状态对象，用来控制并行循环，state.Stop() / state.Break() 就在这用
+                    - index → long：当前元素在集合里的索引
+            */
+            // Parallel.ForEach(numbers, (num, state, index) =>
+            // {
+            //     // 模拟查找：找到能被 999983 整除的数
+            //     if (num % 999983 == 0)
+            //     {
+            //         foundNumber = num;
+            //         Console.WriteLine($"找到了！{num}，索引: {index}");
+
+            //         //立即停止所有迭代（不再处理后续批次）
+            //         state.Stop();
+            //         return;
+            //     }
+            // });
+            // Console.WriteLine($"最终结果: {foundNumber}");
+
+            Console.WriteLine("=== 例6：线程本地状态 ===");
+            var numbers = Enumerable.Range(1, 10000000).ToList();
+            long total = 0;
+            // 低效写法
+            // Parallel.ForEach(numbers, num =>
+            // {
+            //     Interlocked.Add(ref total, num); // 一千万次原子操作！很慢
+            // });
+            // 这个模式在并行聚合（求和、计数、统计）中极其常用，能大幅减少锁竞争，性能提升数倍。
+            /*
+                Func<TSource, ParallelLoopState, TLocal, TLocal>
+                这里第三个参数不再是索引！名字只是变量名，叫`localSum`，它是这个线程分区专属的本地状态。
+                这个委托是`Func`，必须 return 更新后的本地状态。
+            */
+            /*
+            Parallel 内部工作机制：
+            1. Parallel 会把数据源切分成多个分区，每个分区交给一个线程处理。
+            2. 当线程开始处理自己分区前，执行`localInit ()=>0L`，生成一个初始值`0L`，这个值绑定到当前这个线程 / 分区。
+            3. 每处理一个元素，调用 body Func：传入当前分区绑定的`localSum`。
+            4. 在 body 里面累加，`return localSum`，Parallel 框架把返回值存回这个分区的本地状态，供这个线程下一次迭代继续使用。
+            > 
+            > 不同分区（不同线程）有各自独立的`localSum`，互不共享，互不干扰。
+            > 所以多个线程同时执行 body 代码，修改各自的 localSum，不存在竞态，不需要锁。
+
+            ```
+            线程A分区 → localSumA
+            线程B分区 → localSumB
+            线程C分区 → localSumC
+            ```
+
+            三个是独立变量，不是同一个共享变量。
+
+            > 
+            > 注意：这不是 C# 自动给线程创建 ThreadLocal，**是 Parallel 框架内部帮你维护每个分区对应的 TLocal 对象**。
+            */
+            Parallel.ForEach(
+                numbers,
+                // 1. localInit: 每个线程初始化自己的局部变量
+                () => 0L,
+                // 2. body: 每个迭代的逻辑，返回更新后的局部变量
+                (num, state, localSum) =>
+                {
+                    localSum += num;
+                    return localSum;
+                },
+                // 3. localFinally: 每个线程结束时，将局部结果合并到全局
+                localSum =>
+                {
+                    Interlocked.Add(ref total, localSum); // 线程安全的加法
+                }
+            );
+
+            Console.WriteLine($"总和: {total}");
             #endregion
 
+            #region Action/Func/Event/Lambda详解
+            #endregion
         }
     }
 }

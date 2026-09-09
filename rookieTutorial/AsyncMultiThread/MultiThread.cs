@@ -134,17 +134,49 @@ namespace rookieTutorial.AsyncMultiThread
         /// </summary>
         /*
             Parallel类提供了数据并行和任务并行的方法。Parallel.For和Parallel.ForEach可以用于数据并行，即对数据集合中的每个元素并行执行相同的操作。Parallel.Invoke可以用于任务并行，即同时执行多个不同的方法。
+            Parallel 是 并行执行同步代码 的 API，设计用来跑 CPU 密集任务， 原生不支持异步 async 方法。
         */
         /*
-            - `Parallel.For()`：并行 for 循环
-            - `Parallel.ForEach()`：并行遍历集合
-            - `Parallel.Invoke()`：并行执行多个方法
-            - `ParallelOptions`：配置最大并发数、取消令牌
+            核心类
+            Parallel                静态类，提供 Invoke、For、ForEach 三大核心方法
+            ParallelOptions         配置并行行为：最大并发度、取消令牌、任务调度器
+            ParallelLoopState       在循环体内部控制循环：Stop()（立即停止）、Break()（处理完当前批次后停止）、ShouldExitCurrentIteration
+            ParallelLoopResult      循环结束后的结果：IsCompleted、LowestBreakIteration
+        */
+        /*
+            核心方法
+            - `Parallel.For()`：并行 for 循环，数据并行（索引），并行执行固定次数的循环，类似 for
+            - `Parallel.ForEach()`：并行遍历集合，数据并行（集合），并行遍历集合，类似 foreach
+            - `Parallel.Invoke()`：并行执行多个方法，任务并行，同时执行多个不同的委托（Action）
             > 适用：CPU 密集批量计算。
         */
         public static void ParallelMethod()
         {
             Parallel.Invoke(WorkerMethod, WorkerMethodOther1, WorkerMethodOther2);
+        }
+
+        public static void InitializeDatabase()
+        {
+            Console.WriteLine("数据库初始化中...");
+            Thread.Sleep(2000);
+            // await Task.Delay(2000);
+            Console.WriteLine("数据库初始化完成！");
+        }
+
+        public static void LoadConfiguration()
+        {
+            Console.WriteLine("配置加载中...");
+            Thread.Sleep(1000);
+            // await Task.Delay(1000);
+            Console.WriteLine("配置加载完成！");
+        }
+
+        public static async void WarmUpCache()
+        {
+            Console.WriteLine("缓存预热中...");
+            Thread.Sleep(1500);
+            // await Task.Delay(1500);
+            Console.WriteLine("缓存预热完成！");
         }
 
         /*

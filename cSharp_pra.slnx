@@ -1,6 +1,20 @@
 <Solution>
-  <Project Path="CommonLib/CommonLib.csproj" />
-  <Project Path="learnAoiVision/learnAoiVision.csproj" />
-  <Project Path="msLearnCSharp/msLearnCSharp.csproj" />
-  <Project Path="rookieTutorial/rookieTutorial.csproj" />
+  <Folder Name="/src/" />
+  <Folder Name="/src/Backend/" />
+  <Folder Name="/src/Backend/01-BasicWebApi/">
+    <Project Path="src/Backend/01-BasicWebApi/BasicWebApi/BasicWebApi.csproj" />
+  </Folder>
+  <Folder Name="/src/Backend/02-BackgroundWorker/">
+    <Project Path="src/Backend/02-BackgroundWorker/BackgroundWorker/BackgroundWorker.csproj" />
+  </Folder>
+  <Folder Name="/src/Backend/03-ConcurrentQueueLock/">
+    <Project Path="src/Backend/03-ConcurrentQueueLock/ConcurrentQueueLock/ConcurrentQueueLock.csproj" />
+  </Folder>
+  <Folder Name="/src/Backend/04-ChannelBatch/">
+    <Project Path="src/Backend/04-ChannelBatch/ChannelBatch/ChannelBatch.csproj" />
+  </Folder>
+  <Project Path="src/Common/CommonLib/CommonLib.csproj" />
+  <Project Path="src/Learning/rookieTutorial/rookieTutorial.csproj" />
+  <Project Path="src/Learning/learnAoiVision/learnAoiVision.csproj" />
+  <Project Path="src/Learning/msLearnCSharp/msLearnCSharp.csproj" />
 </Solution>

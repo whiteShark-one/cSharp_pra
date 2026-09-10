@@ -2,15 +2,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "启动 msLearnConsole",
+            "name": "启动 msLearnCSharp",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-msLearnCSharp",
-            "program": "${workspaceFolder}/msLearnCSharp/bin/Debug/net10.0/msLearnCSharp.dll",
+            "program": "${workspaceFolder}/src/Learning/msLearnCSharp/bin/Debug/net10.0/msLearnCSharp.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/msLearnCSharp",
-            // "console": "externalTerminal", // 设置对应于外部终端窗口
-            "console": "integratedTerminal ", // 设置对应于 Visual Studio Code 编辑器下方“面板”区域中的“输出”面板
+            "cwd": "${workspaceFolder}/src/Learning/msLearnCSharp",
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {
@@ -18,11 +17,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-rookieTutorial",
-            "program": "${workspaceFolder}/rookieTutorial/bin/Debug/net10.0/rookieTutorial.dll",
+            "program": "${workspaceFolder}/src/Learning/rookieTutorial/bin/Debug/net10.0/rookieTutorial.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/rookieTutorial",
-            // "console": "externalTerminal",
-            "console": "integratedTerminal ",
+            "cwd": "${workspaceFolder}/src/Learning/rookieTutorial",
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {
@@ -30,11 +28,54 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-learnAoiVision",
-            "program": "${workspaceFolder}/learnAoiVision/bin/Debug/net10.0/learnAoiVision.dll",
+            "program": "${workspaceFolder}/src/Learning/learnAoiVision/bin/Debug/net10.0/learnAoiVision.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/learnAoiVision",
-            // "console": "externalTerminal",
-            "console": "integratedTerminal ",
+            "cwd": "${workspaceFolder}/src/Learning/learnAoiVision",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "启动 01-BasicWebApi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-BasicWebApi",
+            "program": "${workspaceFolder}/src/Backend/01-BasicWebApi/BasicWebApi/bin/Debug/net10.0/BasicWebApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Backend/01-BasicWebApi/BasicWebApi",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "启动 02-BackgroundWorker",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-BackgroundWorker",
+            "program": "${workspaceFolder}/src/Backend/02-BackgroundWorker/BackgroundWorker/bin/Debug/net10.0/BackgroundWorker.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Backend/02-BackgroundWorker/BackgroundWorker",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "启动 03-ConcurrentQueueLock",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-ConcurrentQueueLock",
+            "program": "${workspaceFolder}/src/Backend/03-ConcurrentQueueLock/ConcurrentQueueLock/bin/Debug/net10.0/ConcurrentQueueLock.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Backend/03-ConcurrentQueueLock/ConcurrentQueueLock",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "启动 04-ChannelBatch",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-ChannelBatch",
+            "program": "${workspaceFolder}/src/Backend/04-ChannelBatch/ChannelBatch/bin/Debug/net10.0/ChannelBatch.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Backend/04-ChannelBatch/ChannelBatch",
+            "console": "integratedTerminal",
             "stopAtEntry": false
         }
     ]

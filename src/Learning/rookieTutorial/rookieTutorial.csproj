@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonLib\CommonLib.csproj" />
+    <ProjectReference Include="..\..\Common\CommonLib\CommonLib.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

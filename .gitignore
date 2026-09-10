@@ -1,12 +1,138 @@
-# .gitignore 内容
-# .NET 编译缓存
+# ============================================================
+# C# / .NET
+# ============================================================
+
+# Build output
 bin/
 obj/
-*.exe
-*.dll
-*.pdb
+
+# Visual Studio
 .vs/
-.vscode/!settings.json
-.vscode/!extensions.json
-# 系统文件
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build / publish artifacts
+artifacts/
+publish/
+Publish/
+
+
+# ============================================================
+# Test / Coverage
+# ============================================================
+
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+coverage/
+*.opencover.xml
+*.cobertura.xml
+
+
+# ============================================================
+# Benchmark
+# ============================================================
+
+BenchmarkDotNet.Artifacts/
+
+
+# ============================================================
+# NuGet
+# ============================================================
+
+packages/
+*.nupkg
+*.snupkg
+
+
+# ============================================================
+# VS Code
+# ============================================================
+
+# Keep shared project configuration
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+!.vscode/extensions.json
+
+
+# ============================================================
+# JetBrains Rider / ReSharper
+# ============================================================
+
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper.user
+*.DotSettings.user
+
+
+# ============================================================
+# Logs
+# ============================================================
+
+*.log
+logs/
+
+
+# ============================================================
+# Local configuration / secrets
+# ============================================================
+
+.env
+.env.*
+!.env.example
+
+*.local.json
+secrets.json
+
+
+# ============================================================
+# Docker local overrides
+# ============================================================
+
+docker-compose.override.yml
+docker-compose.local.yml
+
+
+# ============================================================
+# Temporary files
+# ============================================================
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.orig
+
+tmp/
+temp/
+
+
+# ============================================================
+# OS generated files
+# ============================================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory

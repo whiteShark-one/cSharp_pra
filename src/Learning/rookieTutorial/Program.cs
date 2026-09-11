@@ -3,6 +3,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.ConstrainedExecution;
+using System.Threading.Channels;
 using AdvancedFeature.rookieTutorial;
 using cSharp_pra.rookieTutorial;
 using rookieTutorial;
@@ -579,24 +580,125 @@ namespace CSharp
             > 
             > 注意：这不是 C# 自动给线程创建 ThreadLocal，**是 Parallel 框架内部帮你维护每个分区对应的 TLocal 对象**。
             */
-            Parallel.ForEach(
-                numbers,
-                // 1. localInit: 每个线程初始化自己的局部变量
-                () => 0L,
-                // 2. body: 每个迭代的逻辑，返回更新后的局部变量
-                (num, state, localSum) =>
-                {
-                    localSum += num;
-                    return localSum;
-                },
-                // 3. localFinally: 每个线程结束时，将局部结果合并到全局
-                localSum =>
-                {
-                    Interlocked.Add(ref total, localSum); // 线程安全的加法
-                }
-            );
+            // Parallel.ForEach(
+            //     numbers,
+            //     // 1. localInit: 每个线程初始化自己的局部变量
+            //     () => 0L,
+            //     // 2. body: 每个迭代的逻辑，返回更新后的局部变量
+            //     (num, state, localSum) =>
+            //     {
+            //         localSum += num;
+            //         return localSum;
+            //     },
+            //     // 3. localFinally: 每个线程结束时，将局部结果合并到全局
+            //     localSum =>
+            //     {
+            //         Interlocked.Add(ref total, localSum); // 线程安全的加法
+            //     }
+            // );
 
-            Console.WriteLine($"总和: {total}");
+            // Console.WriteLine($"总和: {total}");
+            #endregion
+
+            #region Channel的用法
+            learnChannel lc = new();
+            // Console.WriteLine("=== 例1：基础用法 ===");
+            // // 创建无界通道
+            // Channel<int> channel =  Channel.CreateUnbounded<int>();
+            // // 启动生产者
+            // Task producer = learnChannel.ProduceAsync(channel.Writer);
+            // // 启动消费者
+            // Task consumer = learnChannel.ConsumeAsync(channel.Reader);
+            // // 等待生产者完成
+            // await producer;
+            // // 生产者完成后，关闭通道（通知消费者没有更多数据了）
+            // channel.Writer.Complete();
+            // // 等待消费者读完
+            // await consumer;
+            // Console.WriteLine("✅ 所有任务完成！");
+            // Console.WriteLine("=== 例2：使用 ReadAllAsync ===");
+            // Console.WriteLine("=== 例3：有界通道背压 ===");
+            // 容量为 5 的有界通道
+            // Channel<int> channel = Channel.CreateBounded<int>(new BoundedChannelOptions(5)
+            // {
+            //     FullMode = BoundedChannelFullMode.Wait
+            // });
+            // Task producer = Task.Run(async () =>
+            // {
+            //     for (int i = 0; i < 20; i++)
+            //     {
+            //         Console.WriteLine($"[生产] 准备写入 {i}...");
+            //         await channel.Writer.WriteAsync(i);
+            //     }
+            // });
+            // Task consumer = Task.Run(async () =>
+            // {
+            //     await foreach (var item in channel.Reader.ReadAllAsync())
+            //     {
+            //         Console.WriteLine($"[消费] 处理 {item}");
+            //         await Task.Delay(500); // 消费很慢
+            //     }
+            // });
+            // await Task.WhenAll(producer,consumer);
+            // Console.WriteLine("✅ 完成");
+            // Console.WriteLine("=== 例4：多生产者 + 多消费者 ===");
+            // Channel<string> channel = Channel.CreateUnbounded<string>();
+            // // 启动3个生产者
+            // var producers = Enumerable.Range(1, 3).Select(id =>
+            //     Task.Run(async () =>
+            //     {
+            //         for (int i = 0; i < 5; i++)
+            //         {
+            //             string msg = $"P{id}-Item{i}";
+            //             await channel.Writer.WriteAsync(msg);
+            //             Console.WriteLine($"[生产者{id}] 写入 {msg}");
+            //             await Task.Delay(100);
+            //         }
+            //     })
+            // ).ToArray();
+            // // 启动2个消费者
+            // var consumers = Enumerable.Range(1, 2).Select(id =>
+            //     Task.Run(async () =>
+            //     {
+            //         await foreach (var msg in channel.Reader.ReadAllAsync())
+            //         {
+            //             Console.WriteLine($"[消费者{id}] 处理 {msg}");
+            //             await Task.Delay(300);
+            //         }
+            //     })
+            // ).ToArray();
+            // // 等所有生产者完成
+            // await Task.WhenAll(producers);
+            // // 关闭通道
+            // channel.Writer.Complete();
+            // // 等所有消费者结束
+            // await Task.WhenAll(consumers);
+            // Console.WriteLine("✅ 所有生产者和消费者完成");
+            Console.WriteLine("=== 例5：优雅关闭与异常传播 ===");
+            Channel<int> channel = Channel.CreateUnbounded<int>();
+            Task consumer = Task.Run(async () =>
+            {
+                try
+                {
+                    await foreach (var item in channel.Reader.ReadAllAsync())
+                    {
+                        Console.WriteLine($"消费: {item}");
+                    }
+                }
+                catch (ChannelClosedException ex)
+                {
+                    Console.WriteLine($"通道异常关闭: {ex.Message}");
+                }
+            });
+            // 生产者写入几个后，带异常关闭
+            await channel.Writer.WriteAsync(1);
+            await channel.Writer.WriteAsync(2);
+            // 方式1：正常关闭
+            // channel.Writer.Complete(); 
+            // 方式2：带异常关闭（消费者会收到异常）
+            channel.Writer.Complete(new Exception("生产者出错了！"));
+            await consumer;
+
             #endregion
 
             #region Action/Func/Event/Lambda详解
